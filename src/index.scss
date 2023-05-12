@@ -1,4 +1,18 @@
-body {
+.globalContainer {
   min-height: 100vh;
   background-color: rgb(97 176 255);
 }
+
+$theme-colors: (
+  "light": #d0d8df,
+  "dark": #15151c,
+  "primary": #2a4d5b,
+  "secondary": #126a83,
+  "info": #5370c2,
+  "accent1": #91b657,
+  "accent2": #719148,
+  "accent3": #a9c59f,
+  "success": #10af5b,
+  "warning": #ebcc0f,
+  "danger": #f9051f,
+);
