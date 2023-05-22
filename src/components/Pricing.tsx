@@ -19,9 +19,9 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#2a9461",
-      light: "#d0d8df",
-      dark: "#15151c",
+      main: "#d62f2e",
+      light: "#f7fbfc",
+      dark: "#294753",
     },
   },
 });
@@ -35,8 +35,8 @@ function Copyright(props: any) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="https://guillaume-jolibois.fr/">
+        My portfolio website
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -46,41 +46,12 @@ function Copyright(props: any) {
 
 const tiers = [
   {
-    title: "Free",
-    price: "0",
-    description: [
-      "10 users included",
-      "2 GB of storage",
-      "Help center access",
-      "Email support",
-    ],
-    buttonText: "Sign up for free",
-    buttonVariant: "outlined",
-  },
-  {
-    title: "Pro",
+    title: "Cup of coffee",
     subheader: "Most popular",
     price: "15",
-    description: [
-      "20 users included",
-      "10 GB of storage",
-      "Help center access",
-      "Priority email support",
-    ],
+    description: ["A simple but very usefull cup of coffee"],
     buttonText: "Get started",
     buttonVariant: "contained",
-  },
-  {
-    title: "Enterprise",
-    price: "30",
-    description: [
-      "50 users included",
-      "30 GB of storage",
-      "Help center access",
-      "Phone & email support",
-    ],
-    buttonText: "Contact us",
-    buttonVariant: "outlined",
   },
 ];
 const footers = [
@@ -183,7 +154,7 @@ function PricingContent() {
             color="text.primary"
             gutterBottom
           >
-            Pricing
+            Let's buy some stuff
           </Typography>
           <Typography
             variant="h5"
@@ -191,9 +162,10 @@ function PricingContent() {
             color="text.secondary"
             component="p"
           >
-            Quickly build an effective pricing table for your potential
-            customers with this layout. It&apos;s built with default MUI
-            components with little customization.
+            Choose items to add to your caddy, you can also create them if you
+            connect to the database. The items are stored in render.com in SQL
+            thanks to postgres. If you don't log in, your caddy will be saved in
+            local storage
           </Typography>
         </Container>
         {/* End hero unit */}
