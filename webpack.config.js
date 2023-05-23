@@ -1,8 +1,18 @@
 const path = require("path");
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
+
 module.exports = {
-  entry: "./src/index.tsx",
+  entry: ["./src/index.tsx", "./server/index.js"],
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+        options: {
+          presets: ["@babel/preset-react"],
+        },
+      },
       {
         test: /\.tsx?$/,
         use: "ts-loader",
@@ -27,10 +37,14 @@ module.exports = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
+    fallback: {
+      async_hooks: false,
+    },
   },
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
   },
   mode: "development",
+  plugins: [new NodePolyfillPlugin()],
 };
