@@ -15,7 +15,6 @@ import Link from "@mui/material/Link";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import Container from "@mui/material/Container";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-// import dataMapper from "../server/dataMapper";
 
 const theme = createTheme({
   palette: {

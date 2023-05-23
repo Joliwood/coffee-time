@@ -1791,16 +1791,6 @@ eval("// Currently in sync with Node.js lib/internal/util/comparisons.js\n// htt
 
 /***/ }),
 
-/***/ "./server/index.js":
-/*!*************************!*\
-  !*** ./server/index.js ***!
-  \*************************/
-/***/ (function() {
-
-eval("// const express = require(\"express\");\n// const server = express();\n// const path = require(\"path\");\n\n// server.use(express.static(\"public\"));\n\n// server.get(\"/\", (req, res, next) =>\n//   res.render(path.join(__dirname, \"../index.html\"))\n// );\n\n//# sourceURL=webpack://e-com/./server/index.js?");
-
-/***/ }),
-
 /***/ "./node_modules/call-bind/callBound.js":
 /*!*********************************************!*\
   !*** ./node_modules/call-bind/callBound.js ***!
@@ -2851,8 +2841,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	__webpack_require__("./src/index.tsx");
-/******/ 	var __webpack_exports__ = __webpack_require__("./server/index.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.tsx");
 /******/ 	
 /******/ })()
 ;

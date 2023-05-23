@@ -2,7 +2,7 @@ const path = require("path");
 const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 
 module.exports = {
-  entry: ["./src/index.tsx", "./server/index.js"],
+  entry: "./src/index.tsx",
   module: {
     rules: [
       {
