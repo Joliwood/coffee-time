@@ -1,12 +1,12 @@
-# Welcome to E-Com !
+# Welcome to Coffee Time !
 
 ## Context
 
-This is a simple e-commerce like website, with typescript, webpack and redux.
+You can drink the coffee you prefer, it will charges your caffeine rate and it will decreased on time.
 
 ## What is it for ?
 
-The project is written with typescript, it stores the articles you like with redux.
+The project is written with react, in typescript and compiled with webpack. All coffee you take is stored in redux.
 
 <br />
 <hr>
