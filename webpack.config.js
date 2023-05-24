@@ -1,5 +1,4 @@
 const path = require("path");
-const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -37,14 +36,12 @@ module.exports = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
-    fallback: {
-      async_hooks: false,
-    },
+    fallback: {},
   },
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
   },
   mode: "development",
-  plugins: [new NodePolyfillPlugin()],
+  plugins: [],
 };

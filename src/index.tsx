@@ -1,11 +1,11 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import "./index.scss";
-import Pricing from "./components/Pricing";
+import Home from "./components/Home";
 
 ReactDOM.render(
   <body className="globalContainer">
-    <Pricing />
+    <Home />
   </body>,
   document.getElementById("root")
 );

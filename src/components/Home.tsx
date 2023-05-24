@@ -1,5 +1,4 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
@@ -9,12 +8,12 @@ import CardHeader from "@mui/material/CardHeader";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
 import StarIcon from "@mui/icons-material/StarBorder";
-import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import Container from "@mui/material/Container";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Footer from "./Footer";
+import Header from "./Header";
 
 const theme = createTheme({
   palette: {
@@ -26,24 +25,6 @@ const theme = createTheme({
   },
 });
 
-function Copyright(props: any) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link color="inherit" href="https://guillaume-jolibois.fr/">
-        My portfolio website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
 const tiers = [
   {
     title: "Cup of coffee",
@@ -52,35 +33,6 @@ const tiers = [
     description: ["A simple but very usefull cup of coffee"],
     buttonText: "Get started",
     buttonVariant: "contained",
-  },
-];
-const footers = [
-  {
-    title: "Company",
-    description: ["Team", "History", "Contact us", "Locations"],
-  },
-  {
-    title: "Features",
-    description: [
-      "Cool stuff",
-      "Random feature",
-      "Team feature",
-      "Developer stuff",
-      "Another one",
-    ],
-  },
-  {
-    title: "Resources",
-    description: [
-      "Resource",
-      "Resource name",
-      "Another resource",
-      "Final resource",
-    ],
-  },
-  {
-    title: "Legal",
-    description: ["Privacy policy", "Terms of use"],
   },
 ];
 
@@ -92,54 +44,7 @@ function PricingContent() {
           styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }}
         />
         <CssBaseline />
-        <AppBar
-          position="static"
-          color="primary"
-          elevation={0}
-          sx={{
-            borderBottom: (theme) => `1px solid ${theme.palette.primary.dark}`,
-          }}
-        >
-          <Toolbar sx={{ flexWrap: "wrap" }}>
-            <Typography
-              variant="h6"
-              color="inherit"
-              noWrap
-              sx={{ flexGrow: 1 }}
-            >
-              Company name
-            </Typography>
-            <nav>
-              <Link
-                variant="button"
-                color="text.primary"
-                href="#"
-                sx={{ my: 1, mx: 1.5 }}
-              >
-                Features
-              </Link>
-              <Link
-                variant="button"
-                color="text.primary"
-                href="#"
-                sx={{ my: 1, mx: 1.5 }}
-              >
-                Enterprise
-              </Link>
-              <Link
-                variant="button"
-                color="text.primary"
-                href="#"
-                sx={{ my: 1, mx: 1.5 }}
-              >
-                Support
-              </Link>
-            </nav>
-            <Button href="#" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
-              Login
-            </Button>
-          </Toolbar>
-        </AppBar>
+        <Header />
         {/* Hero unit */}
         <Container
           disableGutters
@@ -154,7 +59,7 @@ function PricingContent() {
             color="text.primary"
             gutterBottom
           >
-            Let's buy some stuff
+            Coffee time !
           </Typography>
           <Typography
             variant="h5"
@@ -162,15 +67,19 @@ function PricingContent() {
             color="text.secondary"
             component="p"
           >
-            Choose items to add to your caddy, you can also create them if you
-            connect to the database. The items are stored in render.com in SQL
-            thanks to postgres. If you don't log in, your caddy will be saved in
-            local storage
+            You need a break, and you deserve it ! Let's pick up the coffee you
+            prefer to continue your wonderfull day.
           </Typography>
         </Container>
+
         {/* End hero unit */}
         <Container maxWidth="md" component="main">
-          <Grid container spacing={5} alignItems="flex-end">
+          <Grid
+            container
+            spacing={5}
+            alignItems="flex-end"
+            justifyContent="center"
+          >
             {tiers.map((tier) => (
               // Enterprise card is full width at sm breakpoint
               <Grid
@@ -242,36 +151,9 @@ function PricingContent() {
             ))}
           </Grid>
         </Container>
+
         {/* Footer */}
-        <Container
-          maxWidth="md"
-          component="footer"
-          sx={{
-            borderTop: (theme) => `1px solid ${theme.palette.divider}`,
-            mt: 8,
-            py: [3, 6],
-          }}
-        >
-          <Grid container spacing={4} justifyContent="space-evenly">
-            {footers.map((footer) => (
-              <Grid item xs={6} sm={3} key={footer.title}>
-                <Typography variant="h6" color="text.primary" gutterBottom>
-                  {footer.title}
-                </Typography>
-                <ul>
-                  {footer.description.map((item) => (
-                    <li key={item}>
-                      <Link href="#" variant="subtitle1" color="text.secondary">
-                        {item}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </Grid>
-            ))}
-          </Grid>
-          <Copyright sx={{ mt: 5 }} />
-        </Container>
+        <Footer />
         {/* End footer */}
       </ThemeProvider>
     </React.Fragment>
