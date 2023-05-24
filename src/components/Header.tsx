@@ -3,6 +3,7 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
+import logo from "../images/logo.png";
 
 function Header() {
   return (
@@ -15,7 +16,7 @@ function Header() {
       }}
     >
       <Toolbar sx={{ flexWrap: "wrap" }}>
-        <img src="images/coffeeTimeLogo.png" alt="coffee time logo" />
+        <img src={logo} alt="coffee time logo" />
         <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
           Coffee time
         </Typography>
