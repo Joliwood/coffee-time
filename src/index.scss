@@ -1,18 +1,51 @@
+$mui-palette-primary-Main: "#e66c0f";
+$mui-palette-primary-light: "#f7fbfc";
+$mui-palette-primary-dark: "#294753";
+$mui-palette-primary-contrastText: "#fff";
+
 .globalContainer {
   min-height: 100vh;
-  background-color: #f7fbfc;
+  background-color: #fbf9fb;
+  display: flex;
+  flex-direction: column;
 }
 
-$theme-colors: (
-  "light": #d0d8df,
-  "dark": #15151c,
-  "primary": #2a4d5b,
-  "secondary": #126a83,
-  "info": #5370c2,
-  "accent1": #91b657,
-  "accent2": #719148,
-  "accent3": #a9c59f,
-  "success": #10af5b,
-  "warning": #ebcc0f,
-  "danger": #f9051f,
-);
+.headerBarContainer {
+  > div {
+    margin: 2rem 10rem;
+    height: 100px;
+    border-radius: 20px;
+    padding: 20px 30px;
+    background-color: #303031;
+    display: flex;
+    gap: 20px;
+
+    > img {
+      height: 100%;
+    }
+  }
+}
+
+.headerBarNav {
+  display: flex;
+  gap: 20px;
+
+  > * {
+    color: white !important;
+    text-decoration: none !important;
+
+    &:hover {
+      color: #ebbe77 !important;
+    }
+  }
+}
+
+.footer {
+  margin: 50px;
+  max-width: none;
+}
+
+.contentsContainer {
+  display: flex;
+  flex: 1 1 auto;
+}

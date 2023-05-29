@@ -18,9 +18,10 @@ import Header from "./Header";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#d62f2e",
+      main: "#e66c0f",
       light: "#f7fbfc",
       dark: "#294753",
+      contrastText: "#fff",
     },
   },
 });
@@ -31,7 +32,7 @@ const tiers = [
     subheader: "Most popular",
     price: "15",
     description: ["A simple but very usefull cup of coffee"],
-    buttonText: "Get started",
+    buttonText: "Increment",
     buttonVariant: "contained",
   },
 ];
@@ -73,7 +74,7 @@ function PricingContent() {
         </Container>
 
         {/* End hero unit */}
-        <Container maxWidth="md" component="main">
+        <Container maxWidth="md" component="main" className="contentsContainer">
           <Grid
             container
             spacing={5}

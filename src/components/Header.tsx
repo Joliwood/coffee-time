@@ -9,18 +9,16 @@ function Header() {
   return (
     <AppBar
       position="static"
-      color="primary"
       elevation={0}
-      sx={{
-        borderBottom: (theme) => `1px solid ${theme.palette.primary.dark}`,
-      }}
+      color="primary"
+      className="headerBarContainer"
     >
       <Toolbar sx={{ flexWrap: "wrap" }}>
         <img src={logo} alt="coffee time logo" />
-        <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-          Coffee time
+        <Typography variant="h6" noWrap sx={{ flexGrow: 1 }}>
+          COFFEE TIME !
         </Typography>
-        <nav>
+        <nav className="headerBarNav">
           <Link
             variant="button"
             color="text.primary"
