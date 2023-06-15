@@ -1,12 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./reducer";
+import counterReducer from "./reducers/counterReducer";
 
 // Create the store
 export const store = configureStore({
   reducer: {
-    // posts: postsReducer,
-    // comments: commentsReducer,
-    // users: usersReducer,
     counter: counterReducer,
   },
 });

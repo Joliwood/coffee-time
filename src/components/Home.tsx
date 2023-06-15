@@ -16,7 +16,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../redux/store";
-import { increment } from "../redux/actions";
+import { increment } from "../redux/actions/counterActions";
 
 const theme = createTheme({
   palette: {

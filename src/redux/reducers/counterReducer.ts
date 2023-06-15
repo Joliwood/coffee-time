@@ -1,9 +1,3 @@
-// export type Action = { type: "ADD_NOTE"; payload: string };
-
-// export const addNote = (note: string): Action => ({
-//   type: "ADD_NOTE",
-//   payload: note,
-// });
 import { createSlice } from "@reduxjs/toolkit";
 
 interface CounterState {
@@ -16,7 +10,6 @@ const initialState: CounterState = {
 
 export const counterSlice = createSlice({
   name: "counter",
-  // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
     increment: (state) => {
@@ -26,4 +19,5 @@ export const counterSlice = createSlice({
 });
 
 export const { increment } = counterSlice.actions;
+
 export default counterSlice.reducer;
