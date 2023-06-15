@@ -26,7 +26,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "build": "webpack --mode production --progress --hide-modules",
+    "build": "webpack --mode=production --progress --hide-modules",
     "dev": "webpack serve",
     "start": "react-scripts start",
     "tscheck": "tsc"
