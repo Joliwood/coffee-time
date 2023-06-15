@@ -14,6 +14,9 @@ import Container from "@mui/material/Container";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Footer from "./Footer";
 import Header from "./Header";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState, AppDispatch } from "../redux/store";
+import { increment } from "../redux/actions";
 
 const theme = createTheme({
   palette: {
@@ -38,6 +41,12 @@ const tiers = [
 ];
 
 function PricingContent() {
+  const counterState = useSelector((state: RootState) => state.counter.value);
+  const dispatch = useDispatch<AppDispatch>();
+  const handleIncrement = () => {
+    dispatch(increment());
+  };
+
   return (
     <React.Fragment>
       <ThemeProvider theme={theme}>
@@ -60,7 +69,7 @@ function PricingContent() {
             color="text.primary"
             gutterBottom
           >
-            Coffee time !
+            Coffee time ! x {counterState}
           </Typography>
           <Typography
             variant="h5"
@@ -143,6 +152,7 @@ function PricingContent() {
                     <Button
                       fullWidth
                       variant={tier.buttonVariant as "outlined" | "contained"}
+                      onClick={handleIncrement}
                     >
                       {tier.buttonText}
                     </Button>
