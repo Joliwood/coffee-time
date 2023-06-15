@@ -13,10 +13,11 @@
     "@types/react-dom": "^18.2.4",
     "@types/react-redux": "^7.1.25",
     "file-loader": "^6.2.0",
+    "link": "^1.5.1",
+    "lodash": "^4.17.21",
     "path": "^0.12.7",
-    "pg": "^8.11.0",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-scripts": "5.0.1",
     "sass": "^1.62.1",
@@ -27,9 +28,7 @@
   },
   "scripts": {
     "build": "webpack --mode=production --progress",
-    "dev": "webpack serve",
-    "start": "react-scripts start",
-    "tscheck": "tsc"
+    "dev": "webpack serve --mode=development"
   },
   "eslintConfig": {
     "extends": [
