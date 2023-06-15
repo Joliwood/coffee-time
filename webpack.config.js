@@ -36,12 +36,17 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
+    extensions: [".tsx", ".ts", ".js", "jsx"],
     fallback: {},
   },
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
+  },
+  devServer: {
+    static: {
+      directory: path.resolve(__dirname, "dist"),
+    },
   },
   mode: "development",
   plugins: [],
