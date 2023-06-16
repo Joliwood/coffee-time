@@ -18,7 +18,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../redux/store";
 import { increment } from "../redux/actions/counterActions";
 
-const theme = createTheme({
+export const theme = createTheme({
   palette: {
     primary: {
       main: "#e66c0f",
@@ -29,13 +29,24 @@ const theme = createTheme({
   },
 });
 
-const tiers = [
+const coffees = [
   {
     title: "Cup of coffee",
-    subheader: "Most popular",
-    price: "15",
-    description: ["A simple but very usefull cup of coffee"],
-    buttonText: "Increment",
+    picture: "https://cutewallpaper.org/24x/r9vlme81k/372330969.jpg",
+    buttonText: "Drink it",
+    buttonVariant: "contained",
+  },
+  {
+    title: "Mug of coffee",
+    picture: "https://cutewallpaper.org/24x/r9vlme81k/1960814169.jpg",
+    buttonText: "Drink it",
+    buttonVariant: "contained",
+  },
+  {
+    title: "Nice coffee",
+    picture:
+      "https://i.pinimg.com/236x/72/66/15/726615af38914236e88e7bf0eeb0616d.jpg",
+    buttonText: "Drink it",
     buttonVariant: "contained",
   },
 ];
@@ -90,24 +101,20 @@ function PricingContent() {
             alignItems="flex-end"
             justifyContent="center"
           >
-            {tiers.map((tier) => (
+            {coffees.map((coffee) => (
               // Enterprise card is full width at sm breakpoint
               <Grid
                 item
-                key={tier.title}
+                key={coffee.title}
                 xs={12}
-                sm={tier.title === "Enterprise" ? 12 : 6}
-                md={4}
+                sm={coffee.title === "Enterprise" ? 12 : 6}
+                md={3}
               >
                 <Card>
                   <CardHeader
-                    title={tier.title}
-                    subheader={tier.subheader}
+                    title={coffee.title}
                     titleTypographyProps={{ align: "center" }}
-                    action={tier.title === "Pro" ? <StarIcon /> : null}
-                    subheaderTypographyProps={{
-                      align: "center",
-                    }}
+                    action={coffee.title === "Pro" ? <StarIcon /> : null}
                     sx={{
                       backgroundColor: (theme) =>
                         theme.palette.mode === "light"
@@ -115,7 +122,7 @@ function PricingContent() {
                           : theme.palette.grey[700],
                     }}
                   />
-                  <CardContent>
+                  <CardContent className="coffeeContainer">
                     <Box
                       sx={{
                         display: "flex",
@@ -124,37 +131,16 @@ function PricingContent() {
                         mb: 2,
                       }}
                     >
-                      <Typography
-                        component="h2"
-                        variant="h3"
-                        color="text.primary"
-                      >
-                        ${tier.price}
-                      </Typography>
-                      <Typography variant="h6" color="text.secondary">
-                        /mo
-                      </Typography>
+                      <img src={coffee.picture} alt={coffee.picture} />
                     </Box>
-                    <ul>
-                      {tier.description.map((line) => (
-                        <Typography
-                          component="li"
-                          variant="subtitle1"
-                          align="center"
-                          key={line}
-                        >
-                          {line}
-                        </Typography>
-                      ))}
-                    </ul>
                   </CardContent>
                   <CardActions>
                     <Button
                       fullWidth
-                      variant={tier.buttonVariant as "outlined" | "contained"}
+                      variant={coffee.buttonVariant as "outlined" | "contained"}
                       onClick={handleIncrement}
                     >
-                      {tier.buttonText}
+                      {coffee.buttonText}
                     </Button>
                   </CardActions>
                 </Card>

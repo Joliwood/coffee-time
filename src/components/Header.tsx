@@ -4,6 +4,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import logo from "../images/logo.png";
+import MenuListComposition from "./BurgerMenu";
 
 function Header() {
   return (
@@ -22,7 +23,7 @@ function Header() {
           <Link
             variant="button"
             color="text.primary"
-            href="#"
+            href="/"
             sx={{ my: 1, mx: 1.5 }}
           >
             Home
@@ -44,6 +45,7 @@ function Header() {
             Help
           </Link>
         </nav>
+        <MenuListComposition />
       </Toolbar>
     </AppBar>
   );
