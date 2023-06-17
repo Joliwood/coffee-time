@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import logo from "../images/logo.png";
 import MenuListComposition from "./BurgerMenu";
+import CaffeineBar from "./CaffeineBar";
 
 function Header() {
   return (
@@ -14,7 +15,7 @@ function Header() {
       color="primary"
       className="headerBarContainer"
     >
-      <Toolbar sx={{ flexWrap: "wrap" }}>
+      <Toolbar sx={{ flexWrap: "wrap" }} className="headerBar">
         <img src={logo} alt="coffee time logo" />
         <Typography variant="h6" noWrap sx={{ flexGrow: 1 }}>
           COFFEE TIME !
@@ -47,6 +48,7 @@ function Header() {
         </nav>
         <MenuListComposition />
       </Toolbar>
+      <CaffeineBar />
     </AppBar>
   );
 }

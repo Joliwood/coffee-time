@@ -14,9 +14,9 @@ import Container from "@mui/material/Container";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Footer from "./Footer";
 import Header from "./Header";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState, AppDispatch } from "../redux/store";
-import { increment } from "../redux/actions/counterActions";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../redux/store";
+import { increaseByFive } from "../redux/reducers/counterReducer";
 
 export const theme = createTheme({
   palette: {
@@ -25,6 +25,15 @@ export const theme = createTheme({
       light: "#f7fbfc",
       dark: "#294753",
       contrastText: "#fff",
+    },
+  },
+  components: {
+    MuiSlider: {
+      styleOverrides: {
+        markLabel: {
+          color: "#bdbdbd",
+        },
+      },
     },
   },
 });
@@ -52,10 +61,9 @@ const coffees = [
 ];
 
 function PricingContent() {
-  const counterState = useSelector((state: RootState) => state.counter.value);
   const dispatch = useDispatch<AppDispatch>();
   const handleIncrement = () => {
-    dispatch(increment());
+    dispatch(increaseByFive());
   };
 
   return (
@@ -80,7 +88,7 @@ function PricingContent() {
             color="text.primary"
             gutterBottom
           >
-            Coffee time ! x {counterState}
+            Coffee time !
           </Typography>
           <Typography
             variant="h5"
@@ -148,7 +156,6 @@ function PricingContent() {
             ))}
           </Grid>
         </Container>
-
         {/* Footer */}
         <Footer />
         {/* End footer */}

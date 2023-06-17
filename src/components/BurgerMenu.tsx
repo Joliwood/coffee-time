@@ -19,18 +19,15 @@ export default function MenuListComposition() {
     setOpen((prevOpen) => !prevOpen);
   };
 
-  const handleClose = (event: Event | React.SyntheticEvent) => {
-    if (
-      anchorRef.current &&
-      anchorRef.current.contains(event.target as HTMLElement)
-    ) {
+  const handleClose = (event: Event | React.SyntheticEvent): void => {
+    if (anchorRef.current?.contains(event.target as HTMLElement)) {
       return;
     }
 
     setOpen(false);
   };
 
-  function handleListKeyDown(event: React.KeyboardEvent) {
+  function handleListKeyDown(event: React.KeyboardEvent): void {
     if (event.key === "Tab") {
       event.preventDefault();
       setOpen(false);
@@ -50,7 +47,7 @@ export default function MenuListComposition() {
   }, [open]);
 
   return (
-    <Stack direction="row" spacing={2}>
+    <Stack direction="row" spacing={2} style={{ zIndex: "2" }}>
       <Button
         ref={anchorRef}
         id="composition-button"

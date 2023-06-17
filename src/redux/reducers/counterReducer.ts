@@ -5,19 +5,28 @@ interface CounterState {
 }
 
 const initialState: CounterState = {
-  value: 0,
+  value: 50,
 };
 
 export const counterSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1;
+    decrement: (state) => {
+      if (state.value > 0 && state.value <= 100) {
+        state.value -= 0.5;
+      }
+    },
+    increaseByFive: (state) => {
+      if (state.value >= 0 && state.value < 95) {
+        state.value += 5;
+      } else if (state.value >= 95 && state.value <= 100) {
+        state.value = 100;
+      }
     },
   },
 });
 
-export const { increment } = counterSlice.actions;
+export const { decrement, increaseByFive } = counterSlice.actions;
 
 export default counterSlice.reducer;
