@@ -147,6 +147,7 @@ function PricingContent() {
                       fullWidth
                       variant={coffee.buttonVariant as "outlined" | "contained"}
                       onClick={handleIncrement}
+                      data-testid="incrementButton"
                     >
                       {coffee.buttonText}
                     </Button>

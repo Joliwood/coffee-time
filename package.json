@@ -29,6 +29,7 @@
   "scripts": {
     "build": "webpack --mode=production --progress",
     "check": "tsc",
+    "test": "jest",
     "dev": "webpack serve --mode=development"
   },
   "eslintConfig": {
@@ -53,8 +54,15 @@
     "@babel/preset-env": "^7.22.5",
     "@babel/preset-react": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@types/jest": "^29.5.2",
     "babel-loader": "^9.1.2",
     "css-loader": "^6.7.3",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.7",
+    "jest-enzyme": "^7.1.2",
+    "redux-mock-store": "^1.5.4",
     "sass-loader": "^13.2.2",
     "tsc": "^2.0.4",
     "webpack": "^5.87.0",
@@ -65,5 +73,11 @@
     "react-scripts": {
       "typescript": "^5"
     }
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": [
+      "<rootDir>src/tests/setupTests.js"
+    ]
   }
 }
