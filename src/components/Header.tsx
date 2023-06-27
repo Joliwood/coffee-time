@@ -14,6 +14,7 @@ function Header() {
       elevation={0}
       color="primary"
       className="headerBarContainer"
+      data-testid="header"
     >
       <Toolbar sx={{ flexWrap: "wrap" }} className="headerBar">
         <img src={logo} alt="coffee time logo" />
