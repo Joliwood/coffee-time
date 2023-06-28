@@ -9,6 +9,8 @@
     "moduleResolution": "node",
     "noEmitOnError": true,
     "strict": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true
   }
 }
