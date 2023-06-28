@@ -1,10 +1,13 @@
-import Button from "../Home.tsx";
-import Header from "../Header.tsx";
+import Home from "../Home.tsx";
 import { render, cleanup, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 import React from "react";
 import "@testing-library/jest-dom";
+
+// Changement de Jest 27 à 28, faire attention à ces lignes pour le passage en TS
+// - const expect = require('expect');
+// + const {expect} = require('expect');
 
 const mockStore = configureStore([]);
 const store = mockStore({ counter: [] });
@@ -16,7 +19,7 @@ afterEach(() => {
 describe("test in TS", () => {
   render(
     <Provider store={store}>
-      <Header />
+      <Home />
     </Provider>
   );
 
@@ -24,20 +27,3 @@ describe("test in TS", () => {
     expect(screen.getByTestId("header")).not.toBeNull();
   }, 1000);
 });
-
-// describe("Button increment well on Redux", () => {
-//   render(
-//     <Provider store={store}>
-//       <Button />
-//     </Provider>
-//   );
-//   const incrementButton = screen.getByTestId("incrementButton");
-
-//   it("should exists", () => {
-//     expect(incrementButton).not.toBeNull();
-//   }, 1000);
-
-//   it("should exists SECOND PART", () => {
-//     expect(incrementButton).not.toBeNull();
-//   }, 1000);
-// });

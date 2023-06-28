@@ -60,7 +60,7 @@ const coffees = [
   },
 ];
 
-function PricingContent() {
+function HomeContent() {
   const dispatch = useDispatch<AppDispatch>();
   const handleIncrement = () => {
     dispatch(increaseByFive());
@@ -165,6 +165,6 @@ function PricingContent() {
   );
 }
 
-export default function Pricing() {
-  return <PricingContent />;
+export default function Home() {
+  return <HomeContent />;
 }
