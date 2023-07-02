@@ -3,8 +3,8 @@ import { render, cleanup, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 import React from "react";
-import expect from "expect";
 import "@testing-library/jest-dom";
+import { describe, expect, it } from "@jest/globals";
 
 const mockStore = configureStore([]);
 const store: any = mockStore({ counter: [] });

@@ -13,8 +13,17 @@ module.exports = {
         },
       },
       {
-        test: /\.tsx?$/,
-        use: "ts-loader",
+        test: /\.(ts)x?$/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [
+              "@babel/preset-env",
+              "@babel/preset-react",
+              "@babel/preset-typescript",
+            ],
+          },
+        },
         exclude: /node_modules/,
       },
       {
