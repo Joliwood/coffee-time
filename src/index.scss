@@ -46,6 +46,8 @@ $mui-palette-primary-contrastText: "#fff";
   > * {
     color: white !important;
     text-decoration: none !important;
+    display: flex;
+    align-items: center;
 
     &:hover {
       color: #ebbe77 !important;

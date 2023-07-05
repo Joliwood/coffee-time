@@ -1,15 +1,18 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
+import React from "react";
+import ReactDOM from "react-dom/client";
 import "./index.scss";
-import Home from "./components/Home";
+import App from "./components/App";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 
-ReactDOM.render(
-  <Provider store={store}>
-    <body className="globalContainer">
-      <Home />
-    </body>
-  </Provider>,
-  document.getElementById("root")
-);
+const rootElement = document.getElementById("root");
+
+if (rootElement) {
+  ReactDOM.createRoot(rootElement).render(
+    <React.StrictMode>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </React.StrictMode>
+  );
+}
