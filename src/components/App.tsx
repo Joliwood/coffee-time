@@ -8,7 +8,6 @@ import CardHeader from "@mui/material/CardHeader";
 import Grid from "@mui/material/Grid";
 import StarIcon from "@mui/icons-material/StarBorder";
 import Typography from "@mui/material/Typography";
-import { PaletteMode } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import Container from "@mui/material/Container";
@@ -18,10 +17,10 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../redux/store";
 import { increaseByFive } from "../redux/reducers/counterReducer";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { getDesignTokens } from "../theme/themeColors";
-import { useTheme } from "@mui/material/styles";
 
-const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
+export const ColorModeContext = React.createContext({
+  toggleColorMode: () => {},
+});
 
 const coffees = [
   {
@@ -45,39 +44,11 @@ const coffees = [
   },
 ];
 
-function ButtonMagic() {
-  const theme = useTheme();
-  const colorMode = React.useContext(ColorModeContext);
-  return (
-    <Box
-      sx={{
-        display: "flex",
-        width: "100%",
-        alignItems: "center",
-        justifyContent: "center",
-        bgcolor: "background.default",
-        color: "text.primary",
-        borderRadius: 1,
-        p: 3,
-      }}
-    >
-      {theme.palette.mode} mode
-      <button onClick={colorMode.toggleColorMode} color="inherit">
-        CHANGE THE COLOR BRO
-      </button>
-    </Box>
-  );
-}
-
 function AppCompents() {
   const dispatch = useDispatch<AppDispatch>();
   const handleIncrement = () => {
     dispatch(increaseByFive());
   };
-
-  // const theme = createTheme(getDesignTokens("dark"));
-  // const theme = useTheme();
-  // const colorMode = React.useContext(ColorModeContext);
 
   const [mode, setMode] = React.useState<"light" | "dark">("light");
   const colorMode = React.useMemo(
@@ -94,6 +65,33 @@ function AppCompents() {
       createTheme({
         palette: {
           mode,
+          ...(mode == "light"
+            ? {
+                primary: {
+                  main: "#e66c0f",
+                  light: "#f7fbfc",
+                  dark: "#294753",
+                  contrastText: "#fff",
+                },
+              }
+            : {
+                primary: {
+                  main: "#0076a5",
+                  light: "#f7fbfc",
+                  dark: "#164a5f",
+                  contrastText: "#fff",
+                },
+              }),
+        },
+
+        components: {
+          MuiSlider: {
+            styleOverrides: {
+              markLabel: {
+                color: "#bdbdbd",
+              },
+            },
+          },
         },
       }),
     [mode]
@@ -107,8 +105,7 @@ function AppCompents() {
             styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }}
           />
           <CssBaseline />
-          {/* <Header /> */}
-          <ButtonMagic />
+          <Header />
           {/* Hero unit */}
           <Container
             disableGutters

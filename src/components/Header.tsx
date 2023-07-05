@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -6,27 +6,11 @@ import Link from "@mui/material/Link";
 import logo from "../images/logo.png";
 import MenuListComposition from "./BurgerMenu";
 import CaffeineBar from "./CaffeineBar";
+import ThemeSwitch from "./ThemeSwitch";
 import { useTheme } from "@mui/material/styles";
-import { getDesignTokens } from "../theme/themeColors";
 
 function Header() {
-  const [themeChanged, isThemeChanged] = useState(false);
   const theme = useTheme();
-  const mode = theme.palette.mode;
-
-  useEffect(() => {
-    const selectedTheme = themeChanged ? "light" : "dark";
-    const modeColors = getDesignTokens(selectedTheme);
-    console.log(modeColors.palette.primary.main);
-  }, [isThemeChanged]);
-
-  const changerTheme = () => {
-    isThemeChanged(!themeChanged);
-    const selectedTheme = themeChanged ? "light" : "dark";
-    const modeColors = getDesignTokens(selectedTheme);
-    console.log(themeChanged, modeColors);
-  };
-
   return (
     <AppBar
       position="static"
@@ -34,7 +18,7 @@ function Header() {
       // color="primary"
       className="headerBarContainer"
       data-testid="header"
-      // sx={{ backgroundColor: modeColors.palette.primary.main }}
+      sx={{ backgroundColor: theme.palette.primary.main }}
     >
       <Toolbar sx={{ flexWrap: "wrap" }} className="headerBar">
         <img src={logo} alt="coffee time logo" />
@@ -42,13 +26,7 @@ function Header() {
           COFFEE TIME !
         </Typography>
         <nav className="headerBarNav">
-          <button
-            // style={{ backgroundColor: modeColors.palette.primary.main }}
-            style={{ cursor: "pointer" }}
-            onClick={() => changerTheme()}
-          >
-            X
-          </button>
+          <ThemeSwitch />
           <Link
             variant="button"
             color="text.primary"
