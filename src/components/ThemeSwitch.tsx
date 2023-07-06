@@ -57,9 +57,10 @@ const ThemeSwitch = () => {
   const colorMode = React.useContext(ColorModeContext);
   return (
     <FormControlLabel
-      control={<MaterialUISwitch sx={{ m: 1 }} />}
+      control={
+        <MaterialUISwitch sx={{ m: 1 }} onClick={colorMode.toggleColorMode} />
+      }
       label={theme.palette.mode + " mode"}
-      onClick={colorMode.toggleColorMode}
     />
   );
 };
