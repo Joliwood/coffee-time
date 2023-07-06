@@ -1,5 +1,5 @@
 {
-  "name": "e-com",
+  "name": "coffee-time",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -23,7 +23,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "build": "webpack --mode=production --progress",
+    "build": "webpack --mode=production",
     "check": "tsc",
     "test": "jest --verbose --runInBand --detectOpenHandles --forceExit",
     "dev": "webpack serve --mode=development --port 3000"

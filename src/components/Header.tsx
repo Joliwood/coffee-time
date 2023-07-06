@@ -15,7 +15,6 @@ function Header() {
     <AppBar
       position="static"
       elevation={0}
-      // color="primary"
       className="headerBarContainer"
       data-testid="header"
       sx={{ backgroundColor: theme.palette.primary.main }}
