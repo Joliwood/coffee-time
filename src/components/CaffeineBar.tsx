@@ -51,7 +51,7 @@ const GradientSlider = styled(Slider)(({ theme }) => ({
     borderLeftWidth: 0,
   },
   "& .MuiSlider-thumb": {
-    backgroundColor: theme.palette.mode === "dark" ? "orange" : "blue",
+    backgroundColor: theme.palette.primary.main,
     width: 16,
     height: 16,
     "&:before": {

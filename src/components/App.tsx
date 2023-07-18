@@ -15,7 +15,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../redux/store";
-import { increaseByFive } from "../redux/reducers/counterReducer";
+import { increaseBy5, increaseBy20, increaseBy50 } from "../redux/reducers/counterReducer";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 export const ColorModeContext = React.createContext({
@@ -28,12 +28,14 @@ const coffees = [
     picture: "https://cutewallpaper.org/24x/r9vlme81k/372330969.jpg",
     buttonText: "Drink it",
     buttonVariant: "contained",
+    caffeineQuantity: 5,
   },
   {
     title: "Mug of coffee",
     picture: "https://cutewallpaper.org/24x/r9vlme81k/1960814169.jpg",
     buttonText: "Drink it",
     buttonVariant: "contained",
+    caffeineQuantity: 20,
   },
   {
     title: "Nice coffee",
@@ -41,13 +43,25 @@ const coffees = [
       "https://i.pinimg.com/236x/72/66/15/726615af38914236e88e7bf0eeb0616d.jpg",
     buttonText: "Drink it",
     buttonVariant: "contained",
+    caffeineQuantity: 50,
   },
 ];
 
 function AppCompents() {
   const dispatch = useDispatch<AppDispatch>();
-  const handleIncrement = () => {
-    dispatch(increaseByFive());
+  const handleIncrement = (caffeineQuantity: number) => {
+    
+    switch (caffeineQuantity) {
+      case 5: dispatch(increaseBy5());
+        break;
+      case 20: dispatch(increaseBy20());
+        break;
+      case 50: dispatch(increaseBy50());
+        break;
+      default: console.log("Invalid caffeine quantity");
+        break;
+    }
+    
   };
 
   const [mode, setMode] = React.useState<"light" | "dark">("light");
@@ -175,7 +189,7 @@ function AppCompents() {
                         variant={
                           coffee.buttonVariant as "outlined" | "contained"
                         }
-                        onClick={handleIncrement}
+                        onClick={() => handleIncrement(coffee.caffeineQuantity)}
                         data-testid="incrementButton"
                       >
                         {coffee.buttonText}

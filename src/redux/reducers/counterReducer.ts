@@ -17,16 +17,30 @@ export const counterSlice = createSlice({
         state.value -= 0.5;
       }
     },
-    increaseByFive: (state) => {
+    increaseBy5: (state) => {
       if (state.value >= 0 && state.value < 95) {
         state.value += 5;
       } else if (state.value >= 95 && state.value <= 100) {
         state.value = 100;
       }
     },
+    increaseBy20: (state) => {
+      if (state.value >= 0 && state.value < 80) {
+        state.value += 20;
+      } else if (state.value >= 80 && state.value <= 100) {
+        state.value = 100;
+      }
+    },
+    increaseBy50: (state) => {
+      if (state.value >= 0 && state.value < 50) {
+        state.value += 50;
+      } else if (state.value >= 50 && state.value <= 100) {
+        state.value = 100;
+      }
+    },
   },
 });
 
-export const { decrement, increaseByFive } = counterSlice.actions;
+export const { decrement, increaseBy5, increaseBy20, increaseBy50 } = counterSlice.actions;
 
 export default counterSlice.reducer;
