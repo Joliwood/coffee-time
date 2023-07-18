@@ -1,5 +1,9 @@
 # <p align="center"> Welcome to Coffee Time !
 
+<br />
+<p align=center ><img src="https://github.com/Joliwood/coffee-time/blob/main/docs/coffee-time.gif?raw=true" /></p>
+<br />
+
 ## <p align="center">Context
 
 <p align="center">You can drink the coffee you prefer, it will charges your caffeine rate and it will decreased on time.
@@ -13,7 +17,7 @@
 <p align="center">:zap: = Minor correction / debug
 <p align="center">:construction: = Work in progress
 <p align="center">:hammer: = New functionnality / component
-<p align="center">:memo: = Readme / Code comments / 
+<p align="center">:memo: = Readme / Code comments / Documentations
 <p align="center">:sparkles: = Clean code
 
 <br />
