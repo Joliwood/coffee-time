@@ -12,7 +12,6 @@
     "@types/react-dom": "^18.2.6",
     "@types/react-redux": "^7.1.25",
     "core-js": "^3.31.0",
-    "eslint-config-react-app": "^7.0.1",
     "file-loader": "^6.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -27,11 +26,6 @@
     "check": "tsc",
     "test": "jest --verbose --runInBand --detectOpenHandles --forceExit",
     "dev": "webpack serve --mode=development --port 3000"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
   },
   "browserslist": {
     "production": [
