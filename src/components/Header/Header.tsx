@@ -26,7 +26,17 @@ function Header({ toggleColorMode }: any) {
         <RouterLink to="/">
           <img src={logo} alt="coffee time logo" />
         </RouterLink>
-        <Typography variant="h6" noWrap sx={{ flexGrow: 1 }}>
+        <Typography
+          component={RouterLink}
+          to="/"
+          sx={{
+            flexGrow: 1,
+            color: 'white',
+            textDecoration: 'none',
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
           COFFEE TIME !
         </Typography>
         <nav className="headerBarNav">

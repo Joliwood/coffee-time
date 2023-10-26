@@ -35,6 +35,17 @@
   }
 }
 
+.burgerMenuList {
+  > div {
+    background-color: transparent;
+    > ul {
+      background-color: #303031;
+      color: white;
+      border-radius: 0;
+    }
+  } 
+}
+
 .headerBarNav {
   display: flex;
   gap: 20px;
