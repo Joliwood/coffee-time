@@ -10,7 +10,11 @@ function Copyright() {
       sx={{ mt: 5 }}
     >
       {'Copyright © '}
-      <Link color="inherit" href="https://guillaume-jolibois.fr/">
+      <Link
+        color="inherit"
+        href="https://guillaume-jolibois.fr/"
+        target="_blank"
+      >
         My portfolio website
       </Link>
       {' '}

@@ -23,7 +23,9 @@ function Header({ toggleColorMode }: any) {
       sx={{ backgroundColor: theme.palette.primary.main }}
     >
       <Toolbar sx={{ flexWrap: 'wrap' }} className="headerBar">
-        <img src={logo} alt="coffee time logo" />
+        <RouterLink to="/">
+          <img src={logo} alt="coffee time logo" />
+        </RouterLink>
         <Typography variant="h6" noWrap sx={{ flexGrow: 1 }}>
           COFFEE TIME !
         </Typography>

@@ -6,11 +6,17 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js(x)$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-react'],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env',
+              '@babel/preset-react',
+              '@babel/preset-typescript',
+            ],
+          },
         },
       },
       {
@@ -33,16 +39,12 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: [
-          // Creates `style` nodes from JS strings
-          'style-loader',
-          // Translates CSS into CommonJS
-          'css-loader',
-          // Compiles Sass to CSS
-          'sass-loader',
-        ],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
-      { test: /\.(png|jp(e*)g|svg|gif)$/, use: ['file-loader'] },
+      {
+        test: /\.(png|jp(e*)g|svg|gif)$/,
+        use: ['file-loader'],
+      },
     ],
   },
   resolve: {
@@ -54,17 +56,19 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/dist/',
   },
   devServer: {
     static: {
       directory: path.resolve(__dirname, 'dist'),
     },
+    hot: true,
   },
   mode: 'development',
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/index.html', // Specify the path to your HTML template
-      filename: 'index.html', // The name of the generated HTML file
+      template: 'src/index.html',
+      filename: 'index.html',
     }),
   ],
 };
