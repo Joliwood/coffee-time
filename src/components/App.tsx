@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useMemo, createContext } from "react";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -10,14 +10,15 @@ import coffees from "../data/coffeesList";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../redux/store";
 import { increaseBy5, increaseBy20, increaseBy50 } from "../redux/reducers/counterReducer";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
+import createCustomTheme from "../theme/customTheme";
 import CoffeeCard from "./CoffeeCard";
 
-export const ColorModeContext = React.createContext({
+export const ColorModeContext = createContext({
   toggleColorMode: () => {},
 });
 
-function AppCompents() {
+const AppCompents = () => {
   const dispatch = useDispatch<AppDispatch>();
   const handleIncrement = (caffeineQuantity: number) => {
     
@@ -34,8 +35,8 @@ function AppCompents() {
     
   };
 
-  const [mode, setMode] = React.useState<"light" | "dark">("light");
-  const colorMode = React.useMemo(
+  const [mode, setMode] = useState<"light" | "dark">("light");
+  const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
         setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
@@ -44,53 +45,15 @@ function AppCompents() {
     []
   );
 
-  const theme = React.useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode,
-          ...(mode == "light"
-            ? {
-                primary: {
-                  main: "#e66c0f",
-                  light: "#f7fbfc",
-                  dark: "#294753",
-                  contrastText: "#fff",
-                },
-              }
-            : {
-                primary: {
-                  main: "#0076a5",
-                  light: "#f7fbfc",
-                  dark: "#164a5f",
-                  contrastText: "#fff",
-                },
-              }),
-        },
-
-        components: {
-          MuiSlider: {
-            styleOverrides: {
-              markLabel: {
-                color: "#bdbdbd",
-              },
-            },
-          },
-        },
-      }),
-    [mode]
-  );
-
   return (
     <>
       <ColorModeContext.Provider value={colorMode}>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={createCustomTheme(mode)}>
           <GlobalStyles
             styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }}
           />
           <CssBaseline />
           <Header />
-          {/* Hero unit */}
           <Container
             disableGutters
             maxWidth="sm"
@@ -108,7 +71,6 @@ function AppCompents() {
             </Typography>
           </Container>
 
-          {/* End hero unit */}
           <Container
             maxWidth="md"
             component="main"
@@ -134,15 +96,11 @@ function AppCompents() {
               ))}
             </Grid>
           </Container>
-          {/* Footer */}
           <Footer />
-          {/* End footer */}
         </ThemeProvider>
       </ColorModeContext.Provider>
     </>
   );
 }
 
-export default function App() {
-  return <AppCompents />;
-}
+export default AppCompents;
