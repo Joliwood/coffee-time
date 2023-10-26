@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { Box, Slider, styled } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState, AppDispatch } from '../redux/store';
-import { decrement } from '../redux/reducers/counterReducer';
+import { RootState, AppDispatch } from '../../redux/store';
+import { decrement } from '../../redux/reducers/counterReducer';
 
 const marks = [
   {
@@ -26,10 +26,6 @@ const marks = [
     label: '100%',
   },
 ];
-
-function valuetext(value: number) {
-  return `${value}°C`;
-}
 
 const GradientSlider = styled(Slider)(({ theme }) => ({
   color: 'transparent',
@@ -82,7 +78,6 @@ export default function CaffeineBar() {
       <GradientSlider
         aria-label="Always visible"
         value={sliderValue}
-        getAriaValueText={valuetext}
         step={1}
         marks={marks}
         valueLabelDisplay="off"

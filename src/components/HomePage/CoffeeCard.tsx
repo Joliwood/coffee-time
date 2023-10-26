@@ -8,7 +8,7 @@ import {
   CardHeader,
 } from '@mui/material';
 import StarIcon from '@mui/icons-material/StarBorder';
-import type { Coffee } from '../../types';
+import type { Coffee } from '../../../types';
 
 type CoffeeCardProps = {
   coffee: Coffee;

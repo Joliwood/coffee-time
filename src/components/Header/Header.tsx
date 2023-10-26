@@ -1,8 +1,13 @@
 import React from 'react';
 import {
-  AppBar, Toolbar, Typography, Link, useTheme,
+  AppBar,
+  Toolbar,
+  Typography,
+  Link,
+  useTheme,
 } from '@mui/material';
-import logo from '../images/logo.png';
+import { Link as RouterLink } from 'react-router-dom';
+import logo from '../../images/logo.png';
 import MenuListComposition from './BurgerMenu';
 import CaffeineBar from './CaffeineBar';
 import ThemeSwitch from './ThemeSwitch';
@@ -24,30 +29,28 @@ function Header({ toggleColorMode }: any) {
         </Typography>
         <nav className="headerBarNav">
           <ThemeSwitch toggleColorMode={toggleColorMode} />
-          <Link
-            variant="button"
-            color="text.primary"
-            href="/"
+          <Typography
+            component={RouterLink}
+            to="/"
             sx={{ my: 1, mx: 1.5 }}
           >
-            HOME
-          </Link>
-          <Link
-            variant="button"
-            color="text.primary"
-            href="/dashboard"
+            Home
+          </Typography>
+          <Typography
+            component={RouterLink}
+            to="/dashboard"
             sx={{ my: 1, mx: 1.5 }}
           >
             All your coffees
-          </Link>
-          <Link
-            variant="button"
-            color="text.primary"
+          </Typography>
+          <Typography
+            component={Link}
             href="https://www.choosingtherapy.com/caffeine-addiction/"
+            target="_blank"
             sx={{ my: 1, mx: 1.5 }}
           >
             Help
-          </Link>
+          </Typography>
         </nav>
         <MenuListComposition />
       </Toolbar>
