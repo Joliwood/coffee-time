@@ -1,51 +1,21 @@
 import React from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardHeader from "@mui/material/CardHeader";
 import Grid from "@mui/material/Grid";
-import StarIcon from "@mui/icons-material/StarBorder";
 import Typography from "@mui/material/Typography";
 import CssBaseline from "@mui/material/CssBaseline";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import Container from "@mui/material/Container";
 import Footer from "./Footer";
 import Header from "./Header";
+import coffees from "../data/coffeesList";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../redux/store";
 import { increaseBy5, increaseBy20, increaseBy50 } from "../redux/reducers/counterReducer";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import CoffeeCard from "./CoffeeCard";
 
 export const ColorModeContext = React.createContext({
   toggleColorMode: () => {},
 });
-
-const coffees = [
-  {
-    title: "Cup of coffee",
-    picture: "https://cutewallpaper.org/24x/r9vlme81k/372330969.jpg",
-    buttonText: "Drink it",
-    buttonVariant: "contained",
-    caffeineQuantity: 5,
-  },
-  {
-    title: "Mug of coffee",
-    picture: "https://cutewallpaper.org/24x/r9vlme81k/1960814169.jpg",
-    buttonText: "Drink it",
-    buttonVariant: "contained",
-    caffeineQuantity: 20,
-  },
-  {
-    title: "Nice coffee",
-    picture:
-      "https://i.pinimg.com/236x/72/66/15/726615af38914236e88e7bf0eeb0616d.jpg",
-    buttonText: "Drink it",
-    buttonVariant: "contained",
-    caffeineQuantity: 50,
-  },
-];
 
 function AppCompents() {
   const dispatch = useDispatch<AppDispatch>();
@@ -159,43 +129,7 @@ function AppCompents() {
                   sm={coffee.title === "Enterprise" ? 12 : 6}
                   md={3}
                 >
-                  <Card>
-                    <CardHeader
-                      title={coffee.title}
-                      titleTypographyProps={{ align: "center" }}
-                      action={coffee.title === "Pro" ? <StarIcon /> : null}
-                      sx={{
-                        backgroundColor: (theme) =>
-                          theme.palette.mode === "light"
-                            ? theme.palette.grey[200]
-                            : theme.palette.grey[700],
-                      }}
-                    />
-                    <CardContent className="coffeeContainer">
-                      <Box
-                        sx={{
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "baseline",
-                          mb: 2,
-                        }}
-                      >
-                        <img src={coffee.picture} alt={coffee.picture} />
-                      </Box>
-                    </CardContent>
-                    <CardActions>
-                      <Button
-                        fullWidth
-                        variant={
-                          coffee.buttonVariant as "outlined" | "contained"
-                        }
-                        onClick={() => handleIncrement(coffee.caffeineQuantity)}
-                        data-testid="incrementButton"
-                      >
-                        {coffee.buttonText}
-                      </Button>
-                    </CardActions>
-                  </Card>
+                  <CoffeeCard coffee={coffee} handleIncrement={handleIncrement} />
                 </Grid>
               ))}
             </Grid>
