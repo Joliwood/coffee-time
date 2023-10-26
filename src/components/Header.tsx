@@ -1,13 +1,9 @@
 import React from "react";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
+import { AppBar, Toolbar, Typography, Link, useTheme } from "@mui/material";
 import logo from "../images/logo.png";
 import MenuListComposition from "./BurgerMenu";
 import CaffeineBar from "./CaffeineBar";
 import ThemeSwitch from "./ThemeSwitch";
-import { useTheme } from "@mui/material/styles";
 
 function Header() {
   const theme = useTheme();

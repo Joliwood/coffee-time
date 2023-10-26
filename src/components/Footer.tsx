@@ -1,7 +1,5 @@
-import * as React from "react";
-import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
-import Container from "@mui/material/Container";
+import React from "react";
+import { Typography, Link, Container } from "@mui/material";
 
 function Copyright(props: any) {
   return (

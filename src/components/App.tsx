@@ -1,16 +1,11 @@
 import React, { useState, useMemo, createContext } from "react";
-import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-import CssBaseline from "@mui/material/CssBaseline";
-import GlobalStyles from "@mui/material/GlobalStyles";
-import Container from "@mui/material/Container";
+import { ThemeProvider, Typography, CssBaseline, GlobalStyles, Container, Grid } from "@mui/material";
 import Footer from "./Footer";
 import Header from "./Header";
 import coffees from "../data/coffeesList";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../redux/store";
 import { increaseBy5, increaseBy20, increaseBy50 } from "../redux/reducers/counterReducer";
-import { ThemeProvider } from "@mui/material/styles";
 import createCustomTheme from "../theme/customTheme";
 import CoffeeCard from "./CoffeeCard";
 

@@ -1,8 +1,5 @@
-import * as React from "react";
-import { useEffect } from "react";
-import Box from "@mui/material/Box";
-import Slider from "@mui/material/Slider";
-import { styled } from "@mui/material/styles";
+import React, { useEffect } from "react";
+import { Box, Slider, styled } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../redux/store";
 import { decrement } from "../redux/reducers/counterReducer";
