@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import logo from '../../images/logo.png';
-import MenuListComposition from './BurgerMenu';
+import BurgerMenu from './BurgerMenu';
 import CaffeineBar from './CaffeineBar';
 import ThemeSwitch from './ThemeSwitch';
 
@@ -64,7 +64,7 @@ function Header({ toggleColorMode }: any) {
             Help
           </Typography>
         </nav>
-        <MenuListComposition />
+        <BurgerMenu toggleColorMode={toggleColorMode} />
       </Toolbar>
       <CaffeineBar />
     </AppBar>

@@ -15,6 +15,14 @@
     display: flex;
     gap: 20px;
 
+    @media screen and (max-width: 550px) {
+      height: 80px;
+      margin: 2rem 2vw 5px 2vw;
+      padding: 1rem 1.2rem;
+      gap: 12px;
+      flex-wrap: nowrap;
+    }
+
     > a {
       height: 100%;
 
@@ -32,6 +40,10 @@
     background-color: #303031;
     display: flex;
     gap: 20px;
+
+    @media screen and (max-width: 550px) {
+      margin: 5px 5vw 2rem 5vw;
+    }
   }
 }
 
@@ -42,6 +54,7 @@
       background-color: #303031;
       color: white;
       border-radius: 0;
+      padding: 0.7rem;
     }
   } 
 }

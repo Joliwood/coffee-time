@@ -6,9 +6,11 @@ import {
   MenuItem,
   Stack,
   useTheme,
+  Divider,
 } from '@mui/material';
+import ThemeSwitch from './ThemeSwitch';
 
-export default function MenuListComposition() {
+export default function BurgerMenu({ toggleColorMode }: any) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const theme = useTheme();
@@ -59,6 +61,8 @@ export default function MenuListComposition() {
         <MenuItem onClick={handleClose}>Profile</MenuItem>
         <MenuItem onClick={handleClose}>My account</MenuItem>
         <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <Divider component="li" sx={{ bgcolor: theme.palette.primary.light }} />
+        <ThemeSwitch toggleColorMode={toggleColorMode} />
       </Menu>
     </Stack>
   );
