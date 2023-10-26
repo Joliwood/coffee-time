@@ -1,29 +1,29 @@
-import React, { useEffect } from "react";
-import { Box, Slider, styled } from "@mui/material";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState, AppDispatch } from "../redux/store";
-import { decrement } from "../redux/reducers/counterReducer";
+import React, { useEffect } from 'react';
+import { Box, Slider, styled } from '@mui/material';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState, AppDispatch } from '../redux/store';
+import { decrement } from '../redux/reducers/counterReducer';
 
 const marks = [
   {
     value: 0,
-    label: "0%",
+    label: '0%',
   },
   {
     value: 25,
-    label: "25%",
+    label: '25%',
   },
   {
     value: 50,
-    label: "50%",
+    label: '50%',
   },
   {
     value: 75,
-    label: "75%",
+    label: '75%',
   },
   {
     value: 100,
-    label: "100%",
+    label: '100%',
   },
 ];
 
@@ -32,34 +32,34 @@ function valuetext(value: number) {
 }
 
 const GradientSlider = styled(Slider)(({ theme }) => ({
-  color: "transparent",
+  color: 'transparent',
   height: 4,
-  padding: "15px 0",
-  "& .MuiSlider-rail": {
+  padding: '15px 0',
+  '& .MuiSlider-rail': {
     opacity: 0.5,
-    backgroundColor: "#bfbfbf",
+    backgroundColor: '#bfbfbf',
     height: 4,
     borderRadius: 2,
   },
-  "& .MuiSlider-track": {
+  '& .MuiSlider-track': {
     height: 4,
     borderRadius: 2,
-    backgroundImage: "linear-gradient(to right, red, #00ff22)",
+    backgroundImage: 'linear-gradient(to right, red, #00ff22)',
     borderLeftWidth: 0,
   },
-  "& .MuiSlider-thumb": {
+  '& .MuiSlider-thumb': {
     backgroundColor: theme.palette.primary.main,
     width: 16,
     height: 16,
-    "&:before": {
-      boxShadow: "none",
+    '&:before': {
+      boxShadow: 'none',
     },
-    "&:hover, &.Mui-active": {
-      boxShadow: "none",
+    '&:hover, &.Mui-active': {
+      boxShadow: 'none',
     },
   },
-  "& .MuiSlider-mark": {
-    display: "none",
+  '& .MuiSlider-mark': {
+    display: 'none',
   },
 }));
 

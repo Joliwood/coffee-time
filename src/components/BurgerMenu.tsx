@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-import MenuIcon from "@mui/icons-material/Menu";
+import React, { useState, useRef, useEffect } from 'react';
+import MenuIcon from '@mui/icons-material/Menu';
 import {
   Button,
   Popper,
@@ -9,8 +9,8 @@ import {
   MenuList,
   MenuItem,
   Stack,
-  useTheme
-} from "@mui/material";
+  useTheme,
+} from '@mui/material';
 
 export default function MenuListComposition() {
   const [open, setOpen] = useState(false);
@@ -30,10 +30,10 @@ export default function MenuListComposition() {
   };
 
   function handleListKeyDown(event: React.KeyboardEvent): void {
-    if (event.key === "Tab") {
+    if (event.key === 'Tab') {
       event.preventDefault();
       setOpen(false);
-    } else if (event.key === "Escape") {
+    } else if (event.key === 'Escape') {
       setOpen(false);
     }
   }
@@ -49,18 +49,18 @@ export default function MenuListComposition() {
   }, [open]);
 
   return (
-    <Stack direction="row" spacing={2} style={{ zIndex: "2" }}>
+    <Stack direction="row" spacing={2} style={{ zIndex: '2' }}>
       <Button
         ref={anchorRef}
         id="composition-button"
-        aria-controls={open ? "composition-menu" : undefined}
-        aria-expanded={open ? "true" : undefined}
+        aria-controls={open ? 'composition-menu' : undefined}
+        aria-expanded={open ? 'true' : undefined}
         aria-haspopup="true"
         onClick={handleToggle}
         sx={{
           color: theme.palette.primary.contrastText,
-          minWidth: "unset",
-          display: { md: "none" },
+          minWidth: 'unset',
+          display: { md: 'none' },
         }}
       >
         <MenuIcon fontSize="large" />
@@ -73,12 +73,13 @@ export default function MenuListComposition() {
         transition
         disablePortal
       >
-        {({ TransitionProps, placement }) => (
+        {({ placement }) => (
+
           <Grow
-            {...TransitionProps}
             style={{
               transformOrigin:
-                placement === "top-start" ? "left top" : "right top",
+                placement === 'top-start' ? 'left top' : 'right top',
+              flexWrap: 'wrap',
             }}
           >
             <Paper>
@@ -87,7 +88,7 @@ export default function MenuListComposition() {
                   autoFocusItem={open}
                   id="composition-menu"
                   aria-labelledby="composition-button"
-                  onKeyDown={handleListKeyDown}
+                  onKeyDown={() => handleListKeyDown}
                 >
                   <MenuItem onClick={handleClose}>Home</MenuItem>
                   <MenuItem onClick={handleClose}>All your coffees</MenuItem>

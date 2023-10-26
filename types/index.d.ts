@@ -4,4 +4,4 @@ export type Coffee = {
   buttonText: string,
   buttonVariant: string,
   caffeineQuantity: number
-}
+};

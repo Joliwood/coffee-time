@@ -1,20 +1,21 @@
-import React from "react";
-import { Typography, Link, Container } from "@mui/material";
+import React from 'react';
+import { Typography, Link, Container } from '@mui/material';
 
-function Copyright(props: any) {
+function Copyright() {
   return (
     <Typography
       variant="body2"
       color="text.secondary"
       align="center"
-      {...props}
+      sx={{ mt: 5 }}
     >
-      {"Copyright © "}
+      {'Copyright © '}
       <Link color="inherit" href="https://guillaume-jolibois.fr/">
         My portfolio website
-      </Link>{" "}
+      </Link>
+      {' '}
       {new Date().getFullYear()}
-      {"."}
+      .
     </Typography>
   );
 }
@@ -30,7 +31,7 @@ function Footer() {
       className="footer"
       color="primary"
     >
-      <Copyright sx={{ mt: 5 }} />
+      <Copyright />
     </Container>
   );
 }

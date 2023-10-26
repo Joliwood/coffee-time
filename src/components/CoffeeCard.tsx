@@ -1,40 +1,39 @@
-import React from "react";
+import React from 'react';
 import {
   Box,
-  Button, 
+  Button,
   Card,
   CardActions,
   CardContent,
-  CardHeader
-} from "@mui/material";
-import StarIcon from "@mui/icons-material/StarBorder";
-import type { Coffee } from "../../types";
+  CardHeader,
+} from '@mui/material';
+import StarIcon from '@mui/icons-material/StarBorder';
+import type { Coffee } from '../../types';
 
 type CoffeeCardProps = {
   coffee: Coffee;
   handleIncrement: (caffeineQuantity: number) => void;
-}
+};
 
 function CoffeeCard({ coffee, handleIncrement }: CoffeeCardProps) {
   return (
     <Card>
       <CardHeader
         title={coffee.title}
-        titleTypographyProps={{ align: "center" }}
-        action={coffee.title === "Pro" ? <StarIcon /> : null}
+        titleTypographyProps={{ align: 'center' }}
+        action={coffee.title === 'Pro' ? <StarIcon /> : null}
         sx={{
-          backgroundColor: (theme) =>
-            theme.palette.mode === "light"
-              ? theme.palette.grey[200]
-              : theme.palette.grey[700],
+          backgroundColor: (theme) => (theme.palette.mode === 'light'
+            ? theme.palette.grey[200]
+            : theme.palette.grey[700]),
         }}
       />
       <CardContent className="coffeeContainer">
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "baseline",
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'baseline',
             mb: 2,
           }}
         >
@@ -45,7 +44,7 @@ function CoffeeCard({ coffee, handleIncrement }: CoffeeCardProps) {
         <Button
           fullWidth
           variant={
-            coffee.buttonVariant as "outlined" | "contained"
+            coffee.buttonVariant as 'outlined' | 'contained'
           }
           onClick={() => handleIncrement(coffee.caffeineQuantity)}
           data-testid="incrementButton"
@@ -54,7 +53,7 @@ function CoffeeCard({ coffee, handleIncrement }: CoffeeCardProps) {
         </Button>
       </CardActions>
     </Card>
-  )
+  );
 }
 
-export default CoffeeCard
+export default CoffeeCard;

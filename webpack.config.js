@@ -1,26 +1,27 @@
-const path = require("path");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: "./src/index.tsx",
+  entry: './src/index.tsx',
   module: {
     rules: [
       {
         test: /\.js(x)$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         options: {
-          presets: ["@babel/preset-react"],
+          presets: ['@babel/preset-react'],
         },
       },
       {
         test: /\.ts(x)?$/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
             presets: [
-              "@babel/preset-env",
-              "@babel/preset-react",
-              "@babel/preset-typescript",
+              '@babel/preset-env',
+              '@babel/preset-react',
+              '@babel/preset-typescript',
             ],
           },
         },
@@ -28,37 +29,42 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.s[ac]ss$/i,
         use: [
           // Creates `style` nodes from JS strings
-          "style-loader",
+          'style-loader',
           // Translates CSS into CommonJS
-          "css-loader",
+          'css-loader',
           // Compiles Sass to CSS
-          "sass-loader",
+          'sass-loader',
         ],
       },
-      { test: /\.(png|jp(e*)g|svg|gif)$/, use: ["file-loader"] },
+      { test: /\.(png|jp(e*)g|svg|gif)$/, use: ['file-loader'] },
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js", "jsx"],
+    extensions: ['.tsx', '.ts', '.js', 'jsx'],
     fallback: {},
     cacheWithContext: false,
     symlinks: false,
   },
   output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "dist"),
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
   },
   devServer: {
     static: {
-      directory: path.resolve(__dirname, "dist"),
+      directory: path.resolve(__dirname, 'dist'),
     },
   },
-  mode: "development",
-  plugins: [],
+  mode: 'development',
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.html', // Specify the path to your HTML template
+      filename: 'index.html', // The name of the generated HTML file
+    }),
+  ],
 };

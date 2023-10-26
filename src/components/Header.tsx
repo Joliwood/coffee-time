@@ -1,11 +1,13 @@
-import React from "react";
-import { AppBar, Toolbar, Typography, Link, useTheme } from "@mui/material";
-import logo from "../images/logo.png";
-import MenuListComposition from "./BurgerMenu";
-import CaffeineBar from "./CaffeineBar";
-import ThemeSwitch from "./ThemeSwitch";
+import React from 'react';
+import {
+  AppBar, Toolbar, Typography, Link, useTheme,
+} from '@mui/material';
+import logo from '../images/logo.png';
+import MenuListComposition from './BurgerMenu';
+import CaffeineBar from './CaffeineBar';
+import ThemeSwitch from './ThemeSwitch';
 
-function Header() {
+function Header({ toggleColorMode }: any) {
   const theme = useTheme();
   return (
     <AppBar
@@ -15,13 +17,13 @@ function Header() {
       data-testid="header"
       sx={{ backgroundColor: theme.palette.primary.main }}
     >
-      <Toolbar sx={{ flexWrap: "wrap" }} className="headerBar">
+      <Toolbar sx={{ flexWrap: 'wrap' }} className="headerBar">
         <img src={logo} alt="coffee time logo" />
         <Typography variant="h6" noWrap sx={{ flexGrow: 1 }}>
           COFFEE TIME !
         </Typography>
         <nav className="headerBarNav">
-          <ThemeSwitch />
+          <ThemeSwitch toggleColorMode={toggleColorMode} />
           <Link
             variant="button"
             color="text.primary"
@@ -33,7 +35,7 @@ function Header() {
           <Link
             variant="button"
             color="text.primary"
-            href="#"
+            href="/dashboard"
             sx={{ my: 1, mx: 1.5 }}
           >
             All your coffees
@@ -41,7 +43,7 @@ function Header() {
           <Link
             variant="button"
             color="text.primary"
-            href="#"
+            href="https://www.choosingtherapy.com/caffeine-addiction/"
             sx={{ my: 1, mx: 1.5 }}
           >
             Help
