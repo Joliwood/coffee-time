@@ -32,13 +32,17 @@ function HomePage({ toggleColorMode }: any) {
         disableGutters
         maxWidth="sm"
         component="main"
-        sx={{ pt: 6, pb: 6 }}
+        sx={{
+          pt: '2rem', pb: '2rem', pl: '1rem', pr: '1rem',
+        }}
       >
         <Typography
-          variant="h5"
+          variant="h6"
           align="center"
           color="text.secondary"
           component="p"
+          margin="0"
+          lineHeight={1.2}
         >
           You need a break, and you deserve it ! Let's pick up the coffee
           you prefer to continue your wonderfull day.
@@ -57,12 +61,11 @@ function HomePage({ toggleColorMode }: any) {
           justifyContent="center"
         >
           {coffees.map((coffee) => (
-            // Enterprise card is full width at sm breakpoint
             <Grid
               item
               key={coffee.title}
               xs={12}
-              sm={coffee.title === 'Enterprise' ? 12 : 6}
+              sm={6}
               md={3}
             >
               <CoffeeCard coffee={coffee} handleIncrement={handleIncrement} />

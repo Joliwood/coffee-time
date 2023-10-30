@@ -16,7 +16,7 @@ function Header({ toggleColorMode }: any) {
   const theme = useTheme();
   return (
     <AppBar
-      position="static"
+      position="fixed"
       elevation={0}
       className="headerBarContainer"
       data-testid="header"
@@ -37,7 +37,9 @@ function Header({ toggleColorMode }: any) {
             alignItems: 'center',
           }}
         >
-          COFFEE TIME !
+          <h1>
+            COFFEE TIME !
+          </h1>
         </Typography>
         <nav className="headerBarNav">
           <ThemeSwitch toggleColorMode={toggleColorMode} />

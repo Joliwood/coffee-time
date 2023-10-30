@@ -3,5 +3,7 @@ export type Coffee = {
   picture: string,
   buttonText: string,
   buttonVariant: string,
+  price: string,
+  caffeineQuantityResumed: string,
   caffeineQuantity: number
 };

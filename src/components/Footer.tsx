@@ -7,7 +7,6 @@ function Copyright() {
       variant="body2"
       color="text.secondary"
       align="center"
-      sx={{ mt: 5 }}
     >
       {'Copyright © '}
       <Link

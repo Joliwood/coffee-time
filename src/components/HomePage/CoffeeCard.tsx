@@ -6,6 +6,7 @@ import {
   CardActions,
   CardContent,
   CardHeader,
+  useMediaQuery,
 } from '@mui/material';
 import StarIcon from '@mui/icons-material/StarBorder';
 import type { Coffee } from '../../../types';
@@ -16,9 +17,12 @@ type CoffeeCardProps = {
 };
 
 function CoffeeCard({ coffee, handleIncrement }: CoffeeCardProps) {
+  const isSmallScreen = useMediaQuery('(max-width:550px)');
+
   return (
-    <Card>
+    <Card className="coffeeContainerForm">
       <CardHeader
+        component="h2"
         title={coffee.title}
         titleTypographyProps={{ align: 'center' }}
         action={coffee.title === 'Pro' ? <StarIcon /> : null}
@@ -26,6 +30,7 @@ function CoffeeCard({ coffee, handleIncrement }: CoffeeCardProps) {
           backgroundColor: (theme) => (theme.palette.mode === 'light'
             ? theme.palette.grey[200]
             : theme.palette.grey[700]),
+          margin: 0,
         }}
       />
       <CardContent className="coffeeContainer">
@@ -39,17 +44,35 @@ function CoffeeCard({ coffee, handleIncrement }: CoffeeCardProps) {
         >
           <img src={coffee.picture} alt={coffee.picture} />
         </Box>
+        {!isSmallScreen && (
+          <>
+            <h3>
+              {coffee.price}
+            </h3>
+            <h3>
+              {coffee.caffeineQuantityResumed}
+            </h3>
+          </>
+        )}
       </CardContent>
       <CardActions>
         <Button
-          fullWidth
-          variant={
-            coffee.buttonVariant as 'outlined' | 'contained'
-          }
+          fullWidth={!isSmallScreen}
+          variant={coffee.buttonVariant as 'outlined' | 'contained'}
           onClick={() => handleIncrement(coffee.caffeineQuantity)}
           data-testid="incrementButton"
+          className="incrementButton"
         >
           {coffee.buttonText}
+          {isSmallScreen && (
+          <span style={{ marginLeft: 'auto' }}>
+            {coffee.caffeineQuantityResumed}
+            {' '}
+            |
+            {' '}
+            {coffee.price}
+          </span>
+          )}
         </Button>
       </CardActions>
     </Card>
