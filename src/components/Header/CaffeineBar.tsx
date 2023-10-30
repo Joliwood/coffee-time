@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../../redux/store';
-import { decrement } from '../../redux/reducers/counterReducer';
+import { decrement } from '../../redux/reducers/caffeineReducer';
 
 const marks = [
   {

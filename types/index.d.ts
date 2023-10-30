@@ -7,3 +7,13 @@ export type Coffee = {
   caffeineQuantityResumed: string,
   caffeineQuantity: number
 };
+
+export type CoffeeInReducer = CoffeeSimplified[];
+
+type CoffeeSimplified = {
+  title: string,
+  picture: string,
+  price: string,
+  caffeineQuantityResumed: string,
+  caffeineQuantity: number
+};

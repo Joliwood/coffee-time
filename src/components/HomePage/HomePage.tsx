@@ -8,7 +8,7 @@ import Header from '../Header/Header';
 import coffees from '../../data/coffeesList';
 import CoffeeCard from './CoffeeCard';
 import { AppDispatch } from '../../redux/store';
-import { increaseBy5, increaseBy20, increaseBy50 } from '../../redux/reducers/counterReducer';
+import { increaseBy5, increaseBy20, increaseBy50 } from '../../redux/reducers/caffeineReducer';
 
 function HomePage({ toggleColorMode }: any) {
   const dispatch = useDispatch<AppDispatch>();

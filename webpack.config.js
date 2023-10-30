@@ -63,6 +63,7 @@ module.exports = {
       directory: path.resolve(__dirname, 'dist'),
     },
     hot: true,
+    historyApiFallback: true,
   },
   mode: 'development',
   plugins: [
