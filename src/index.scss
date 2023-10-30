@@ -1,3 +1,7 @@
+html {
+  background-color: #303031;
+}
+
 .globalContainer {
   min-height: 100vh;
   background-color: #fbf9fb;
@@ -17,7 +21,8 @@
 
     @media screen and (max-width: 550px) {
       height: 80px;
-      margin: 2rem 2vw 5px 2vw;
+      margin: 0;
+      border-radius: 0;
       padding: 1rem 1.2rem;
       gap: 12px;
       flex-wrap: nowrap;
@@ -42,7 +47,15 @@
     gap: 20px;
 
     @media screen and (max-width: 550px) {
-      margin: 5px 5vw 2rem 5vw;
+      margin: 5px 2vw;
+      padding: 5px;
+      border-radius: 8px;
+    }
+
+    > span {
+      @media screen and (max-width: 550px) {
+        padding: 0;
+      }
     }
   }
 }
@@ -87,6 +100,10 @@
 .contentsContainer {
   display: flex;
   flex: 1 1 auto;
+}
+
+.gradientMuiSlider {
+  
 }
 
 .coffeeContainer {

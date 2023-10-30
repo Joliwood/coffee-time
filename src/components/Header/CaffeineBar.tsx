@@ -1,5 +1,11 @@
 import React, { useEffect } from 'react';
-import { Box, Slider, styled } from '@mui/material';
+import {
+  Box,
+  Slider,
+  styled,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '../../redux/store';
 import { decrement } from '../../redux/reducers/counterReducer';
@@ -27,14 +33,14 @@ const marks = [
   },
 ];
 
-const GradientSlider = styled(Slider)(({ theme }) => ({
+const GradientSlider = styled(Slider)(() => ({
   color: 'transparent',
   height: 4,
   padding: '15px 0',
   '& .MuiSlider-rail': {
     opacity: 0.5,
     backgroundColor: '#bfbfbf',
-    height: 4,
+    height: 6,
     borderRadius: 2,
   },
   '& .MuiSlider-track': {
@@ -44,15 +50,7 @@ const GradientSlider = styled(Slider)(({ theme }) => ({
     borderLeftWidth: 0,
   },
   '& .MuiSlider-thumb': {
-    backgroundColor: theme.palette.primary.main,
-    width: 16,
-    height: 16,
-    '&:before': {
-      boxShadow: 'none',
-    },
-    '&:hover, &.Mui-active': {
-      boxShadow: 'none',
-    },
+    display: 'none',
   },
   '& .MuiSlider-mark': {
     display: 'none',
@@ -62,6 +60,8 @@ const GradientSlider = styled(Slider)(({ theme }) => ({
 export default function CaffeineBar() {
   const dispatch = useDispatch<AppDispatch>();
   const sliderValue = useSelector((state: RootState) => state.counter.value);
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -79,8 +79,9 @@ export default function CaffeineBar() {
         aria-label="Always visible"
         value={sliderValue}
         step={1}
-        marks={marks}
+        marks={matches ? marks : false}
         valueLabelDisplay="off"
+        className="gradientMuiSlider"
       />
     </Box>
   );
