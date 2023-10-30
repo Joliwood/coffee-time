@@ -2,29 +2,12 @@ import React from 'react';
 import {
   Typography, Container, Grid,
 } from '@mui/material';
-import { useDispatch } from 'react-redux';
 import Footer from '../Footer';
 import Header from '../Header/Header';
 import coffees from '../../data/coffeesList';
 import CoffeeCard from './CoffeeCard';
-import { AppDispatch } from '../../redux/store';
-import { increaseBy5, increaseBy20, increaseBy50 } from '../../redux/reducers/caffeineReducer';
 
 function HomePage({ toggleColorMode }: any) {
-  const dispatch = useDispatch<AppDispatch>();
-  const handleIncrement = (caffeineQuantity: number) => {
-    switch (caffeineQuantity) {
-      case 5: dispatch(increaseBy5());
-        break;
-      case 20: dispatch(increaseBy20());
-        break;
-      case 50: dispatch(increaseBy50());
-        break;
-      default: console.log('Invalid caffeine quantity');
-        break;
-    }
-  };
-
   return (
     <>
       <Header toggleColorMode={toggleColorMode} />
@@ -68,7 +51,7 @@ function HomePage({ toggleColorMode }: any) {
               sm={6}
               md={3}
             >
-              <CoffeeCard coffee={coffee} handleIncrement={handleIncrement} />
+              <CoffeeCard coffee={coffee} />
             </Grid>
           ))}
         </Grid>

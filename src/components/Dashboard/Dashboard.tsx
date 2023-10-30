@@ -10,26 +10,14 @@ import {
   TableCell,
   TableBody,
 } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 import Header from '../Header/Header';
 import Footer from '../Footer';
 
 function Dashboard({ toggleColorMode }: any) {
-  function createData(
-    name: string,
-    calories: number,
-    fat: number,
-  ) {
-    return {
-      name, calories, fat,
-    };
-  }
-  const rows = [
-    createData('Frozen yoghurt', 159, 6.0),
-    createData('Ice cream sandwich', 237, 9.0),
-    createData('Eclair', 262, 16.0),
-    createData('Cupcake', 305, 3.7),
-    createData('Gingerbread', 356, 16.0),
-  ];
+  const coffeesDrunk = useSelector((state: RootState) => state.coffees);
+
   return (
     <>
       <Header toggleColorMode={toggleColorMode} />
@@ -58,22 +46,32 @@ function Dashboard({ toggleColorMode }: any) {
             <Table aria-label="simple table">
               <TableHead>
                 <TableRow>
+                  <TableCell />
                   <TableCell>Type of coffee</TableCell>
                   <TableCell align="right">Price</TableCell>
                   <TableCell align="right">Amount of caffein</TableCell>
+                  <TableCell align="right">Quantity</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row) => (
+                {coffeesDrunk.map((coffee) => (
                   <TableRow
-                    key={row.name}
+                    key={coffee.title}
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                   >
-                    <TableCell component="th" scope="row">
-                      {row.name}
+                    <TableCell align="left">
+                      <img
+                        src={coffee.picture}
+                        alt={coffee.title}
+                        style={{ height: '40px' }}
+                      />
                     </TableCell>
-                    <TableCell align="right">{row.calories}</TableCell>
-                    <TableCell align="right">{row.fat}</TableCell>
+                    <TableCell component="th" scope="row">
+                      {coffee.title}
+                    </TableCell>
+                    <TableCell align="right">{coffee.price}</TableCell>
+                    <TableCell align="right">{coffee.caffeineQuantityResumed}</TableCell>
+                    <TableCell align="right">{coffee.quantity}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>

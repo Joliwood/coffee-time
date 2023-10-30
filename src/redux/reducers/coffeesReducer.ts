@@ -1,28 +1,43 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { CoffeeInReducer } from '../../../types';
 
-const initialState: CoffeeInReducer = [];
+interface CoffeePayload {
+  title: string;
+  price: string;
+  caffeineQuantityResumed: string;
+  quantity?: number;
+  picture: string;
+}
 
-console.log(initialState);
+const initialState: CoffeeInReducer = [];
 
 export const counterSlice = createSlice({
   name: 'coffeesDrunk',
   initialState,
   reducers: {
-    addCoffee: (state) => {
-      if (state.value > 0 && state.value <= 100) {
-        return { ...state, value: state.value - 0.5 };
+    addCoffee: (state: CoffeeInReducer, action: PayloadAction<CoffeePayload>) => {
+      const {
+        title, quantity, picture, ...rest
+      } = action.payload;
+      const existingCoffeeIndex = state.findIndex((coffee) => coffee.title === title);
+
+      if (existingCoffeeIndex !== -1) {
+        state[existingCoffeeIndex] = {
+          ...state[existingCoffeeIndex],
+          quantity: (state[existingCoffeeIndex].quantity || 1) + (quantity || 1),
+        };
+      } else {
+        state.push({
+          title,
+          quantity: quantity || 1,
+          picture,
+          ...rest,
+        });
       }
-      return state;
     },
   },
 });
 
-export const {
-  addCoffee,
-  // increaseBy5,
-  // increaseBy20,
-  // increaseBy50,
-} = counterSlice.actions;
+export const { addCoffee } = counterSlice.actions;
 
 export default counterSlice.reducer;

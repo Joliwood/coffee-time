@@ -9,15 +9,27 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import StarIcon from '@mui/icons-material/StarBorder';
-import type { Coffee } from '../../../types';
+import { useDispatch } from 'react-redux';
+// import type { CoffeeSimplified } from '../../../types';
+import { AppDispatch } from '../../redux/store';
+import { increaseBy5, increaseBy20, increaseBy50 } from '../../redux/reducers/caffeineReducer';
+import { addCoffee } from '../../redux/reducers/coffeesReducer';
 
-type CoffeeCardProps = {
-  coffee: Coffee;
-  handleIncrement: (caffeineQuantity: number) => void;
-};
-
-function CoffeeCard({ coffee, handleIncrement }: CoffeeCardProps) {
+function CoffeeCard({ coffee }: any) {
   const isSmallScreen = useMediaQuery('(max-width:550px)');
+  const dispatch = useDispatch<AppDispatch>();
+  const handleIncrement = (caffeineQuantity: number) => {
+    switch (caffeineQuantity) {
+      case 5: dispatch(increaseBy5());
+        break;
+      case 20: dispatch(increaseBy20());
+        break;
+      case 50: dispatch(increaseBy50());
+        break;
+      default: console.log('Invalid caffeine quantity');
+        break;
+    }
+  };
 
   return (
     <Card className="coffeeContainerForm">
@@ -59,7 +71,10 @@ function CoffeeCard({ coffee, handleIncrement }: CoffeeCardProps) {
         <Button
           fullWidth={!isSmallScreen}
           variant={coffee.buttonVariant as 'outlined' | 'contained'}
-          onClick={() => handleIncrement(coffee.caffeineQuantity)}
+          onClick={() => {
+            handleIncrement(coffee.caffeineQuantity);
+            dispatch(addCoffee(coffee));
+          }}
           data-testid="incrementButton"
           className="incrementButton"
         >

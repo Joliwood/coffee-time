@@ -11,9 +11,11 @@ export type Coffee = {
 export type CoffeeInReducer = CoffeeSimplified[];
 
 type CoffeeSimplified = {
-  title: string,
-  picture: string,
-  price: string,
-  caffeineQuantityResumed: string,
-  caffeineQuantity: number
+  pictureUrl: string,
+  title?: string,
+  picture?: string,
+  price?: string,
+  quantity: number,
+  caffeineQuantityResumed?: string,
+  caffeineQuantity?: number
 };
