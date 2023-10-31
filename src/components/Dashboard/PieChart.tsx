@@ -2,7 +2,14 @@ import React from 'react';
 import { PieChart, pieArcClasses } from '@mui/x-charts/PieChart';
 import { useTheme, useMediaQuery } from '@mui/material';
 
-const customColors = ['#efef97', '#f7b845', '#db3f3f'];
+const customColors = [
+  '#efef97',
+  '#f7b845',
+  '#db3f3f',
+  '#49b998',
+  '#8ed64a',
+  '#4599bb',
+];
 
 export default function PieArcLabel({ coffeesDrunk }: any) {
   const theme = useTheme();

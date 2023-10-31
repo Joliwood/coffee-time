@@ -7,7 +7,9 @@ import {
   Stack,
   useTheme,
   Divider,
+  Link,
 } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 import ThemeSwitch from './ThemeSwitch';
 
 export default function BurgerMenu({ toggleColorMode }: any) {
@@ -58,9 +60,28 @@ export default function BurgerMenu({ toggleColorMode }: any) {
         className="burgerMenuList"
         sx={{ color: theme.palette.primary.contrastText }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem
+          onClick={handleClose}
+          component={RouterLink}
+          to="/"
+        >
+          Home
+        </MenuItem>
+        <MenuItem
+          onClick={handleClose}
+          component={RouterLink}
+          to="/dashboard"
+        >
+          All my coffees
+        </MenuItem>
+        <MenuItem
+          onClick={handleClose}
+          component={Link}
+          href="https://www.choosingtherapy.com/caffeine-addiction/"
+          target="_blank"
+        >
+          Help
+        </MenuItem>
         <Divider component="li" sx={{ bgcolor: theme.palette.primary.light }} />
         <ThemeSwitch toggleColorMode={toggleColorMode} />
       </Menu>

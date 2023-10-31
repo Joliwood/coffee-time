@@ -61,7 +61,12 @@ function Dashboard({ toggleColorMode }: any) {
                       <img
                         src={coffee.picture}
                         alt={coffee.title}
-                        style={{ height: '40px' }}
+                        style={{
+                          height: '40px',
+                          aspectRatio: '1/1',
+                          borderRadius: '8px',
+                          objectFit: 'cover',
+                        }}
                       />
                     </TableCell>
                     <TableCell component="th" scope="row">

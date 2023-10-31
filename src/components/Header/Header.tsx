@@ -55,7 +55,7 @@ function Header({ toggleColorMode }: any) {
             to="/dashboard"
             sx={{ my: 1, mx: 1.5 }}
           >
-            All your coffees
+            All my coffees
           </Typography>
           <Typography
             component={Link}
