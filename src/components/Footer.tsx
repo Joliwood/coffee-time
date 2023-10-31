@@ -26,6 +26,7 @@ function Copyright() {
 function Footer() {
   return (
     <Container
+      data-testid="footer"
       maxWidth="md"
       component="footer"
       sx={{
