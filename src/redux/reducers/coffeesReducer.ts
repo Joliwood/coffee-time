@@ -1,14 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { CoffeeInReducer } from '../../../types';
+import type { CoffeeInReducer, CoffeePayload } from '../../../types';
 
-interface CoffeePayload {
-  title: string;
-  price: string;
-  caffeineQuantityResumed: string;
-  quantity?: number;
-  picture: string;
-}
-
+// All coffees user drunk
 const initialState: CoffeeInReducer = [];
 
 export const counterSlice = createSlice({
@@ -16,23 +9,21 @@ export const counterSlice = createSlice({
   initialState,
   reducers: {
     addCoffee: (state: CoffeeInReducer, action: PayloadAction<CoffeePayload>) => {
-      const {
-        title, quantity, picture, ...rest
-      } = action.payload;
-      const existingCoffeeIndex = state.findIndex((coffee) => coffee.title === title);
+      const coffeeToAdd = action.payload;
 
-      if (existingCoffeeIndex !== -1) {
-        state[existingCoffeeIndex] = {
-          ...state[existingCoffeeIndex],
-          quantity: (state[existingCoffeeIndex].quantity || 1) + (quantity || 1),
-        };
+      // We search in the state / initialState if the coffee we want to add already exists
+      const existingCoffee = state.find((coffee) => coffee.title === coffeeToAdd.title);
+
+      // If yes, we just increment the quantity
+      if (existingCoffee) {
+        existingCoffee.quantity += 1;
+        // If not, we add it with quantity 1 (not provided in the event)
       } else {
-        state.push({
-          title,
-          quantity: quantity || 1,
-          picture,
-          ...rest,
-        });
+        const newCoffee = {
+          quantity: 1,
+          ...coffeeToAdd,
+        };
+        state.push(newCoffee);
       }
     },
   },

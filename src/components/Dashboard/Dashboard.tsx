@@ -26,7 +26,11 @@ function Dashboard({ toggleColorMode }: any) {
         maxWidth="sm"
         component="main"
         sx={{
-          pt: '2rem', pb: '2rem', pl: '1rem', pr: '1rem',
+          pt: '2rem',
+          pb: '2rem',
+          pl: '1rem',
+          pr: '1rem',
+          flexGrow: 1,
         }}
       >
         <Typography
