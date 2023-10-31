@@ -17,6 +17,35 @@ html {
   flex-direction: column;
 }
 
+.dashboardMainContainer {
+  padding: 2rem 1rem;
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  max-width: unset !important;
+}
+
+.dashboardContentsContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap-reverse;
+  gap: 100px 0;
+  margin-bottom: 3rem;
+  margin-top: 100px;
+  margin-left: 5vw;
+  margin-right: 5vw;
+
+  @media screen and (max-width: 550px) {
+    gap: 50px 0;
+    margin-top: 50px;
+  }
+
+  > div {
+    height: auto;
+    max-width: 600px;
+  }
+}
+
 .globalContainer {
   min-height: 100vh;
   background-color: #fbf9fb;

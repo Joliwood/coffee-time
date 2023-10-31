@@ -14,6 +14,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import Header from '../Header/Header';
 import Footer from '../Footer';
+import PieArcLabel from './PieChart';
 
 function Dashboard({ toggleColorMode }: any) {
   const coffeesDrunk = useSelector((state: RootState) => state.coffees);
@@ -23,15 +24,8 @@ function Dashboard({ toggleColorMode }: any) {
       <Header toggleColorMode={toggleColorMode} />
       <Container
         disableGutters
-        maxWidth="sm"
         component="main"
-        sx={{
-          pt: '2rem',
-          pb: '2rem',
-          pl: '1rem',
-          pr: '1rem',
-          flexGrow: 1,
-        }}
+        className="dashboardMainContainer"
       >
         <Typography
           variant="h6"
@@ -45,7 +39,7 @@ function Dashboard({ toggleColorMode }: any) {
           you prefer to continue your wonderfull day.
         </Typography>
 
-        <div>
+        <div className="dashboardContentsContainer">
           <TableContainer component={Paper}>
             <Table aria-label="simple table">
               <TableHead>
@@ -81,7 +75,7 @@ function Dashboard({ toggleColorMode }: any) {
               </TableBody>
             </Table>
           </TableContainer>
-          <img src="lorem" alt="" />
+          {coffeesDrunk.length > 0 && <PieArcLabel coffeesDrunk={coffeesDrunk} />}
         </div>
       </Container>
       <Footer />
