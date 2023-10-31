@@ -1,10 +1,12 @@
-import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./reducers/counterReducer";
+import { configureStore } from '@reduxjs/toolkit';
+import caffeineReducer from './reducers/caffeineReducer';
+import coffeesReducer from './reducers/coffeesReducer';
 
 // Create the store
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    counter: caffeineReducer,
+    coffees: coffeesReducer,
   },
 });
 

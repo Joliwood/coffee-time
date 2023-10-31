@@ -1,214 +1,51 @@
-import React from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardHeader from "@mui/material/CardHeader";
-import Grid from "@mui/material/Grid";
-import StarIcon from "@mui/icons-material/StarBorder";
-import Typography from "@mui/material/Typography";
-import CssBaseline from "@mui/material/CssBaseline";
-import GlobalStyles from "@mui/material/GlobalStyles";
-import Container from "@mui/material/Container";
-import Footer from "./Footer";
-import Header from "./Header";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../redux/store";
-import { increaseBy5, increaseBy20, increaseBy50 } from "../redux/reducers/counterReducer";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import React, { useState, useMemo, createContext } from 'react';
+import {
+  ThemeProvider, CssBaseline, GlobalStyles,
+} from '@mui/material';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import createCustomTheme from '../theme/customTheme';
+import HomePage from './HomePage/HomePage';
+import Dashboard from './Dashboard/Dashboard';
 
-export const ColorModeContext = React.createContext({
+export const ColorModeContext = createContext({
   toggleColorMode: () => {},
 });
 
-const coffees = [
-  {
-    title: "Cup of coffee",
-    picture: "https://cutewallpaper.org/24x/r9vlme81k/372330969.jpg",
-    buttonText: "Drink it",
-    buttonVariant: "contained",
-    caffeineQuantity: 5,
-  },
-  {
-    title: "Mug of coffee",
-    picture: "https://cutewallpaper.org/24x/r9vlme81k/1960814169.jpg",
-    buttonText: "Drink it",
-    buttonVariant: "contained",
-    caffeineQuantity: 20,
-  },
-  {
-    title: "Nice coffee",
-    picture:
-      "https://i.pinimg.com/236x/72/66/15/726615af38914236e88e7bf0eeb0616d.jpg",
-    buttonText: "Drink it",
-    buttonVariant: "contained",
-    caffeineQuantity: 50,
-  },
-];
-
 function AppCompents() {
-  const dispatch = useDispatch<AppDispatch>();
-  const handleIncrement = (caffeineQuantity: number) => {
-    
-    switch (caffeineQuantity) {
-      case 5: dispatch(increaseBy5());
-        break;
-      case 20: dispatch(increaseBy20());
-        break;
-      case 50: dispatch(increaseBy50());
-        break;
-      default: console.log("Invalid caffeine quantity");
-        break;
-    }
-    
-  };
-
-  const [mode, setMode] = React.useState<"light" | "dark">("light");
-  const colorMode = React.useMemo(
+  const [mode, setMode] = useState<'light' | 'dark'>('light');
+  const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
-        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
       },
     }),
-    []
-  );
-
-  const theme = React.useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode,
-          ...(mode == "light"
-            ? {
-                primary: {
-                  main: "#e66c0f",
-                  light: "#f7fbfc",
-                  dark: "#294753",
-                  contrastText: "#fff",
-                },
-              }
-            : {
-                primary: {
-                  main: "#0076a5",
-                  light: "#f7fbfc",
-                  dark: "#164a5f",
-                  contrastText: "#fff",
-                },
-              }),
-        },
-
-        components: {
-          MuiSlider: {
-            styleOverrides: {
-              markLabel: {
-                color: "#bdbdbd",
-              },
-            },
-          },
-        },
-      }),
-    [mode]
+    [],
   );
 
   return (
-    <>
-      <ColorModeContext.Provider value={colorMode}>
-        <ThemeProvider theme={theme}>
-          <GlobalStyles
-            styles={{ ul: { margin: 0, padding: 0, listStyle: "none" } }}
-          />
-          <CssBaseline />
-          <Header />
-          {/* Hero unit */}
-          <Container
-            disableGutters
-            maxWidth="sm"
-            component="main"
-            sx={{ pt: 6, pb: 6 }}
-          >
-            <Typography
-              variant="h5"
-              align="center"
-              color="text.secondary"
-              component="p"
-            >
-              You need a break, and you deserve it ! Let's pick up the coffee
-              you prefer to continue your wonderfull day.
-            </Typography>
-          </Container>
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={createCustomTheme(mode)}>
+        <GlobalStyles
+          styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }}
+        />
+        <CssBaseline />
 
-          {/* End hero unit */}
-          <Container
-            maxWidth="md"
-            component="main"
-            className="contentsContainer"
-          >
-            <Grid
-              container
-              spacing={5}
-              alignItems="flex-end"
-              justifyContent="center"
-            >
-              {coffees.map((coffee) => (
-                // Enterprise card is full width at sm breakpoint
-                <Grid
-                  item
-                  key={coffee.title}
-                  xs={12}
-                  sm={coffee.title === "Enterprise" ? 12 : 6}
-                  md={3}
-                >
-                  <Card>
-                    <CardHeader
-                      title={coffee.title}
-                      titleTypographyProps={{ align: "center" }}
-                      action={coffee.title === "Pro" ? <StarIcon /> : null}
-                      sx={{
-                        backgroundColor: (theme) =>
-                          theme.palette.mode === "light"
-                            ? theme.palette.grey[200]
-                            : theme.palette.grey[700],
-                      }}
-                    />
-                    <CardContent className="coffeeContainer">
-                      <Box
-                        sx={{
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "baseline",
-                          mb: 2,
-                        }}
-                      >
-                        <img src={coffee.picture} alt={coffee.picture} />
-                      </Box>
-                    </CardContent>
-                    <CardActions>
-                      <Button
-                        fullWidth
-                        variant={
-                          coffee.buttonVariant as "outlined" | "contained"
-                        }
-                        onClick={() => handleIncrement(coffee.caffeineQuantity)}
-                        data-testid="incrementButton"
-                      >
-                        {coffee.buttonText}
-                      </Button>
-                    </CardActions>
-                  </Card>
-                </Grid>
-              ))}
-            </Grid>
-          </Container>
-          {/* Footer */}
-          <Footer />
-          {/* End footer */}
-        </ThemeProvider>
-      </ColorModeContext.Provider>
-    </>
+        <Router>
+          <Routes>
+            <Route
+              path="/"
+              element={<HomePage toggleColorMode={colorMode.toggleColorMode} />}
+            />
+            <Route
+              path="/dashboard"
+              element={<Dashboard toggleColorMode={colorMode.toggleColorMode} />}
+            />
+          </Routes>
+        </Router>
+
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 }
 
-export default function App() {
-  return <AppCompents />;
-}
+export default AppCompents;

@@ -1,22 +1,24 @@
-import * as React from "react";
-import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
-import Container from "@mui/material/Container";
+import React from 'react';
+import { Typography, Link, Container } from '@mui/material';
 
-function Copyright(props: any) {
+function Copyright() {
   return (
     <Typography
       variant="body2"
       color="text.secondary"
       align="center"
-      {...props}
     >
-      {"Copyright © "}
-      <Link color="inherit" href="https://guillaume-jolibois.fr/">
+      {'Copyright © '}
+      <Link
+        color="inherit"
+        href="https://guillaume-jolibois.fr/"
+        target="_blank"
+      >
         My portfolio website
-      </Link>{" "}
+      </Link>
+      {' '}
       {new Date().getFullYear()}
-      {"."}
+      .
     </Typography>
   );
 }
@@ -24,6 +26,7 @@ function Copyright(props: any) {
 function Footer() {
   return (
     <Container
+      data-testid="footer"
       maxWidth="md"
       component="footer"
       sx={{
@@ -32,7 +35,7 @@ function Footer() {
       className="footer"
       color="primary"
     >
-      <Copyright sx={{ mt: 5 }} />
+      <Copyright />
     </Container>
   );
 }

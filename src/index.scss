@@ -1,7 +1,50 @@
-// $mui-palette-primary-Main: "#e66c0f";
-// $mui-palette-primary-light: "#f7fbfc";
-// $mui-palette-primary-dark: "#294753";
-// $mui-palette-primary-contrastText: "#fff";
+html {
+  background-color: #303031;
+  padding-top: 200px;
+
+  @media screen and (max-width: 600px) {
+    padding-top: 185px;
+  }
+
+  @media screen and (max-width: 550px) {
+    padding-top: 100px;
+  }
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboardMainContainer {
+  padding: 2rem 1rem;
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  max-width: unset !important;
+}
+
+.dashboardContentsContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap-reverse;
+  gap: 100px 0;
+  margin-bottom: 3rem;
+  margin-top: 100px;
+  margin-left: 5vw;
+  margin-right: 5vw;
+
+  @media screen and (max-width: 550px) {
+    gap: 50px 0;
+    margin-top: 50px;
+  }
+
+  > div {
+    height: auto;
+    max-width: 600px;
+  }
+}
 
 .globalContainer {
   min-height: 100vh;
@@ -12,7 +55,7 @@
 
 .headerBarContainer {
   > .headerBar {
-    margin: 2rem 8vw 5px 8vw;
+    margin: 1rem 3vw 2px 3vw;
     height: 100px;
     border-radius: 20px;
     padding: 20px 30px;
@@ -20,19 +63,62 @@
     display: flex;
     gap: 20px;
 
-    > img {
+    @media screen and (max-width: 550px) {
+      height: 80px;
+      margin: 0;
+      border-radius: 0;
+      padding: 1rem 1.2rem;
+      gap: 12px;
+      flex-wrap: nowrap;
+    }
+
+    > a {
       height: 100%;
+
+      > h1 {
+        font-size: 1.2rem;
+        font-weight: normal;
+      }
+
+      > img {
+        height: 100%;
+        object-fit: contain;
+      }
     }
   }
 
   > .caffeineBarContainer {
-    margin: 5px 10vw 2rem 10vw;
+    margin: 2px 10vw 1rem 10vw;
     border-radius: 20px;
     padding: 5px 30px 7px 30px;
     background-color: #303031;
     display: flex;
     gap: 20px;
+
+    @media screen and (max-width: 550px) {
+      margin: 5px 2vw;
+      padding: 5px;
+      border-radius: 8px;
+    }
+
+    > span {
+      @media screen and (max-width: 550px) {
+        padding: 0;
+      }
+    }
   }
+}
+
+.burgerMenuList {
+  > div {
+    background-color: transparent;
+    > ul {
+      background-color: #303031;
+      color: white;
+      border-radius: 0;
+      padding: 0.7rem;
+    }
+  } 
 }
 
 .headerBarNav {
@@ -56,7 +142,9 @@
 }
 
 .footer {
-  margin: 50px;
+  margin-top: 50px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   max-width: none;
 }
 
@@ -65,15 +153,50 @@
   flex: 1 1 auto;
 }
 
+.coffeeContainerForm {
+  @media screen and (max-width: 550px) {
+    margin: auto;
+    gap: 5px;
+    width: max-content;
+  }
+}
+
+.incrementButton {
+  @media screen and (max-width: 550px) {
+    width: auto;
+    display: flex;
+    gap: 2rem;
+    align-self: center;
+  }
+}
+
 .coffeeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: normal;
+  }
+
   > div {
     margin: 0;
 
     > img {
       aspect-ratio: 1/1;
+      border-radius: 8px;
       object-fit: cover;
       width: 100%;
       margin: 0;
+      margin-bottom: 16px;
+
+      @media screen and (max-width: 900px) {
+        aspect-ratio: inherit;
+        max-width: 150px;
+        margin-bottom: 0;
+      }
     }
   }
 }
